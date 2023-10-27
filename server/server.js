@@ -20,7 +20,8 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(REACT_BUILD_DIR, 'index.html'));
 });
 
-// create the get requests
+
+// create the GET requests
 app.get('/api/users', cors(), async (req, res) => {
 
   try {
@@ -58,6 +59,8 @@ app.get('/api/volunteering', cors(), async (req, res) => {
 
 
 
+
+
 // create the POST request
 app.post('/api/users', cors(), async (req, res) => {
   const newUser = {
@@ -77,14 +80,13 @@ app.post('/api/users', cors(), async (req, res) => {
 });
 
 
-
 app.post('/api/orgs', async (req, res) =>{
   try {
-      const {org_id, user_id, volunteering_type, volunteering_description, start_date, end_date} = req.body;
+      const {org_name, headquarters, phone, admin_email} = req.body;
 
       const result = await db.query(
-      "INSERT INTO events (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
-          [org_id, user_id, volunteering_type, volunteering_description, start_date, end_date]
+      "INSERT INTO orgs (org_name, headquarters, phone, admin_email) VALUES ($1, $2, $3, $4) RETURNING *",
+          [org_name, headquarters, phone, admin_email]
       );
       let dbResponse = result.rows[0];
       console.log(dbResponse)
@@ -95,26 +97,36 @@ app.post('/api/orgs', async (req, res) =>{
   }
 })
 
+app.post('/api/volunteering', async (req, res) =>{
+  try {
+    const {org_id, user_id, volunteering_type, volunteering_description, start_date, end_date} = req.body;
+
+    const result1 = await db.query(
+    "INSERT INTO events (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+        [org_id, user_id, volunteering_type, volunteering_description, start_date, end_date]
+    );
+    let dbResponse1 = result1.rows[0];
+    console.log(dbResponse1)
+    res.json(dbResponse1);
+} catch(error){
+    console.log(error);
+    res.status(400).json({error});
+}
+})
 
 
 
-
-
-
-
-
-
-//A put request - Update a student 
-app.put('/api/students/:studentId', cors(), async (req, res) =>{
+//A PUT request
+app.put('/api/users/:user_id', cors(), async (req, res) =>{
   console.log(req.params);
-  //This will be the id that I want to find in the DB - the student to be updated
-  const studentId = req.params.studentId
-  const updatedStudent = { id: req.body.id, firstname: req.body.firstname, lastname: req.body.lastname}
-  console.log("In the server from the url - the student id", studentId);
-  console.log("In the server, from the react - the student to be edited", updatedStudent);
-  // UPDATE students SET lastname = "something" WHERE id="16";
-  const query = `UPDATE students SET lastname=$1, firstname=$2 WHERE id=${studentId} RETURNING *`;
-  const values = [updatedStudent.lastname, updatedStudent.firstname];
+  //This will be the id that I want to find in the DB - the user to be updated
+  const user_id = req.params.user_id
+  const updatedUser = { id: req.body.id, first_name: req.body.first_name, last_name: req.body.last_name, email: req.body.email, password: req.body.password}
+  console.log("In the server from the url - the user id", user_id);
+  console.log("In the server, from the react - the user to be edited", updatedUser);
+  // UPDATE users SET last_name = "something" WHERE id="16";
+  const query = `UPDATE users SET last_name=$1, first_name=$2, email=$3, password=$4, WHERE id=${user_id} RETURNING *`;
+  const values = [updatedUser.last_name, updatedUser.first_name, updatedUser.email, updatedUser.password];
   try {
     const updated = await db.query(query, values);
     console.log(updated.rows[0]);
@@ -126,7 +138,34 @@ app.put('/api/students/:studentId', cors(), async (req, res) =>{
   }
 })
 
-// delete request
+app.put('/api/volunteering/:volunteering_id', cors(), async (req, res) =>{
+  console.log(req.params);
+  //This will be the id that I want to find in the DB - the user to be updated
+  const volunteering_id = req.params.volunteering_id
+  const updatedVolunteer = { id: req.body.id, volunteering_type: req.body.volunteering_type, volunteering_description: req.body.volunteering_description, start_date: req.body.start_date, end_date: req.body.end_date}
+  console.log("In the server from the url - the user id", volunteering_id);
+  console.log("In the server, from the react - the user to be edited", updatedVolunteer);
+  // UPDATE 
+  const query = `UPDATE volunteering SET volunteering_type=$1, volunteering_description=$2, start_date=$3, end_date=$4, WHERE id=${volunteering_id} RETURNING *`;
+  const values = [updatedUser.last_name, updatedUser.first_name, updatedUser.email, updatedUser.password];
+  try {
+    const updated = await db.query(query, values);
+    console.log(updated.rows[0]);
+    res.send(updated.rows[0]);
+
+  }catch(e){
+    console.log(e);
+    return res.status(400).json({e})
+  }
+})
+
+
+
+
+
+
+
+// DELETE request
 app.delete('/api/students/:studentId', cors(), async (req, res) =>{
   const studentId = req.params.studentId;
   //console.log("From the delete request-url", req.params);
