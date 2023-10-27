@@ -138,6 +138,26 @@ app.put('/api/users/:user_id', cors(), async (req, res) =>{
   }
 })
 
+app.put('/api/orgs/:org_id', cors(), async (req, res) =>{
+  console.log(req.params);
+  const org_id = req.params.org_id
+  const updatedOrg = { id: req.body.id, org_name_name: req.body.org_name, headquarters: req.body.headquarters, phone: req.body.phone, admin_email: req.body.admin_email}
+  console.log("In the server from the url - the org id", org_id);
+  console.log("In the server, from the react - the org to be edited", updatedOrg);
+  //UPDATE QUERY
+  const query = `UPDATE org SET org_name=$2, headquarters=$3, phone=$4, admin_email=$5   WHERE id=${org_id} RETURNING *`;
+  const values = [updatedOrg.org_name, updatedOrg.headquarters, updatedOrg.phone, updatedOrg.admin_email];
+  try {
+    const updated = await db.query(query, values);
+    console.log(updated.rows[0]);
+    res.send(updated.rows[0]);
+
+  }catch(e){
+    console.log(e);
+    return res.status(400).json({e})
+  }
+})
+
 app.put('/api/volunteering/:volunteering_id', cors(), async (req, res) =>{
   console.log(req.params);
   //This will be the id that I want to find in the DB - the user to be updated
@@ -161,18 +181,33 @@ app.put('/api/volunteering/:volunteering_id', cors(), async (req, res) =>{
 
 
 
-
-
-
-
 // DELETE request
-app.delete('/api/students/:studentId', cors(), async (req, res) =>{
-  const studentId = req.params.studentId;
+app.delete('/api/users/:user_id', cors(), async (req, res) =>{
+  const user_id = req.params.user_id;
   //console.log("From the delete request-url", req.params);
-  await db.query('DELETE FROM students WHERE id=$1', [studentId]);
+  await db.query('DELETE FROM users WHERE id=$1', [user_id]);
   res.status(200).end();
 
+  app.delete('/api/users/:org_id', cors(), async (req, res) =>{
+    const org_id = req.params.org_id;
+    //console.log("From the delete request-url", req.params);
+    await db.query('DELETE FROM org WHERE id=$1', [org_id]);
+    res.status(200).end();
+
 });
+app.delete('/api/users/:volunteering_id', cors(), async (req, res) =>{
+  const volunteering_id = req.params.volunteering_id;
+  //console.log("From the delete request-url", req.params);
+  await db.query('DELETE FROM volunteer WHERE id=$1', [volunteering_id]);
+  res.status(200).end();
+});
+
+});
+
+
+
+
+
 
 
 // create the POST request for a new user
