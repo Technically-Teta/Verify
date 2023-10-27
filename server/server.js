@@ -20,39 +20,77 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(REACT_BUILD_DIR, 'index.html'));
 });
 
-// create the get request
-app.get('/api/students', cors(), async (req, res) => {
-  // const STUDENTS = [
+// create the get requests
+app.get('/api/users', cors(), async (req, res) => {
 
-  //     { id: 1, firstName: 'Lisa', lastName: 'Lee' },
-  //     { id: 2, firstName: 'Eileen', lastName: 'Long' },
-  //     { id: 3, firstName: 'Fariba', lastName: 'Dadko' },
-  //     { id: 4, firstName: 'Cristina', lastName: 'Rodriguez' },
-  //     { id: 5, firstName: 'Andrea', lastName: 'Trejo' },
-  // ];
-  // res.json(STUDENTS);
   try {
-    const { rows: students } = await db.query('SELECT * FROM students');
-    res.send(students);
+    const { rows: users } = await db.query('SELECT * FROM users');
+    res.send(users);
   } catch (e) {
     return res.status(400).json({ e });
   }
 });
 
+
+app.get('/api/orgs', cors(), async (req, res) => {
+
+  try {
+    const { rows: orgs } = await db.query('SELECT * FROM orgs');
+    res.send(orgs);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
+
+app.get('/api/volunteering', cors(), async (req, res) => {
+
+  try {
+    const { rows: volunteering } = await db.query('SELECT * FROM volunteering');
+    res.send(volunteering);
+  } catch (e) {
+    return res.status(400).json({ e });
+  }
+});
+
+
+
+
+
+
+
+
+
+
 // create the POST request
-app.post('/api/students', cors(), async (req, res) => {
+app.post('/api/users', cors(), async (req, res) => {
   const newUser = {
-    firstname: req.body.firstname,
-    lastname: req.body.lastname,
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    username: req.body.username,
+    email: req.body.email,
+    password: req.body.password
   };
-  console.log([newUser.firstname, newUser.lastname]);
+  console.log([newUser.first_name, newUser.last_name, newUser.username, newUser.email, newUser.password]);
   const result = await db.query(
-    'INSERT INTO students(firstname, lastname) VALUES($1, $2) RETURNING *',
-    [newUser.firstname, newUser.lastname],
+    'INSERT INTO students(first_name, last_name, username, email, password) VALUES($1, $2, $3, $4, $5) RETURNING *',
+    [newUser.first_name, newUser.last_name, newUser.username, newUser.email, newUser.password],
   );
   console.log(result.rows[0]);
   res.json(result.rows[0]);
 });
+
+
+
+
+
+
+
+
+
+
+
+
 
 //A put request - Update a student 
 app.put('/api/students/:studentId', cors(), async (req, res) =>{
