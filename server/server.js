@@ -58,10 +58,6 @@ app.get('/api/volunteering', cors(), async (req, res) => {
 
 
 
-
-
-
-
 // create the POST request
 app.post('/api/users', cors(), async (req, res) => {
   const newUser = {
@@ -82,6 +78,22 @@ app.post('/api/users', cors(), async (req, res) => {
 
 
 
+app.post('/api/orgs', async (req, res) =>{
+  try {
+      const {org_id, user_id, volunteering_type, volunteering_description, start_date, end_date} = req.body;
+
+      const result = await db.query(
+      "INSERT INTO events (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+          [org_id, user_id, volunteering_type, volunteering_description, start_date, end_date]
+      );
+      let dbResponse = result.rows[0];
+      console.log(dbResponse)
+      res.json(dbResponse);
+  } catch(error){
+      console.log(error);
+      res.status(400).json({error});
+  }
+})
 
 
 
