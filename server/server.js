@@ -18,6 +18,7 @@ app.use(express.json());
 app.get('/', (req, res) => {
   //res.json({ message: 'Hello from My template ExpressJS' });
   res.sendFile(path.join(REACT_BUILD_DIR, 'index.html'));
+ console.log('the get request succeeded')
 });
 
 

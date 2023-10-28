@@ -80,7 +80,7 @@ function Users(props) {
           } else{
             return (
               <li key={user.id}>
-           {user.firstname} {user.lastname} 
+           {user.first_name} {user.last_name} {user.username}{user.email}{user.password}
            <button type="button" onClick={() =>{onEdit(user)}}>EDIT</button>
            <button type="button" onClick={() =>{onDelete(user)}}>DELETE</button>
         </li>
