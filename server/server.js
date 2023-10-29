@@ -3,16 +3,20 @@ const cors = require('cors');
 require('dotenv').config();
 const path = require('path');
 const db = require('./db/db-connection.js');
-
+const bodyParser = require('body-parser');
 
 const app = express();
 ///Users/cristina/src/2022H2TemplateFinal/client/build
 const REACT_BUILD_DIR = path.join(__dirname, '..', 'client', 'build');
 app.use(express.static(REACT_BUILD_DIR));
 
+
 const PORT = process.env.PORT || 8080;
 app.use(cors());
 app.use(express.json());
+// Configuring body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // creates an endpoint for the route /api
 app.get('/', (req, res) => {
@@ -23,15 +27,43 @@ app.get('/', (req, res) => {
 
 
 // create the GET requests
-app.get('/api/users', cors(), async (req, res) => {
+app.get('/api/users', async (req,res) => {
 
-  try {
-    const { rows: users } = await db.query('SELECT * FROM users');
-    res.send(users);
-  } catch (e) {
-    return res.status(400).json({ e });
-  }
-});
+//   try {
+//     const { rows: users } = await db.query('SELECT * FROM users').catch(err =>{(console.log('error with db query',err))});
+ 
+//     console.debug('users)', users);
+//     res.send(users);
+//   } catch (e) {
+//     console.debug({e})
+//     return res.status(400).json({ e });
+//   }
+// });
+
+try{
+  const users = [
+
+      {id:1, first_name:'John',last_name: 'Doe',username:'johndoe', email:'john@example.com', password:'hashed_password_1'} ,
+      {id:2, first_name:'Jane',last_name: 'Smith',username:'janesmith',email:'jane@example.com', password:'hashed_password_2'},
+      {id:3, first_name:'Bob', last_name:'Johnson', username:'bobjohnson', email:'bob@example.com', password:'hashed_password_3'},
+      {id:4, first_name:'Alice',last_name: 'Williams', username:'alicewilliams', email:'alice@example.com', password: 'hashed_password_4'}
+        
+    ];
+  res.json(users);
+
+} catch(error){
+  console.log(error);
+}   
+
+})
+
+
+
+
+
+
+
+
 
 
 app.get('/api/orgs', cors(), async (req, res) => {
@@ -55,13 +87,6 @@ app.get('/api/volunteering', cors(), async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
 // create the POST request
 app.post('/api/users', cors(), async (req, res) => {
   const newUser = {
@@ -73,7 +98,7 @@ app.post('/api/users', cors(), async (req, res) => {
   };
   console.log([newUser.first_name, newUser.last_name, newUser.username, newUser.email, newUser.password]);
   const result = await db.query(
-    'INSERT INTO students(first_name, last_name, username, email, password) VALUES($1, $2, $3, $4, $5) RETURNING *',
+    'INSERT INTO users(first_name, last_name, username, email, password) VALUES($1, $2, $3, $4, $5) RETURNING *',
     [newUser.first_name, newUser.last_name, newUser.username, newUser.email, newUser.password],
   );
   console.log(result.rows[0]);
@@ -180,29 +205,41 @@ app.put('/api/volunteering/:volunteering_id', cors(), async (req, res) =>{
   }
 })
 
-// DELETE request
-app.delete('/api/users/:user_id', cors(), async (req, res) =>{
+// DELETE request for users
+app.delete('/api/users/:user_id', async (req, res) => {
   const user_id = req.params.user_id;
-  //console.log("From the delete request-url", req.params);
-  await db.query('DELETE FROM users WHERE id=$1', [user_id]);
-  res.status(200).end();
-
-  app.delete('/api/users/:org_id', cors(), async (req, res) =>{
-    const org_id = req.params.org_id;
-    //console.log("From the delete request-url", req.params);
-    await db.query('DELETE FROM org WHERE id=$1', [org_id]);
-    res.status(200).end();
-
+  try {
+    await db.query('DELETE FROM users WHERE id=$1', [user_id]);
+    res.status(204).end(); // 204 means "No Content"
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
 });
-app.delete('/api/users/:volunteering_id', cors(), async (req, res) =>{
+
+// DELETE request for orgs
+app.delete('/api/orgs/:org_id', async (req, res) => {
+  const org_id = req.params.org_id;
+  try {
+    await db.query('DELETE FROM orgs WHERE id=$1', [org_id]);
+    res.status(204).end(); // 204 means "No Content"
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
+});
+
+// DELETE request for volunteering
+app.delete('/api/volunteering/:volunteering_id', async (req, res) => {
   const volunteering_id = req.params.volunteering_id;
-  //console.log("From the delete request-url", req.params);
-  await db.query('DELETE FROM volunteer WHERE id=$1', [volunteering_id]);
-  res.status(200).end();
+  try {
+    await db.query('DELETE FROM volunteering WHERE id=$1', [volunteering_id]);
+    res.status(204).end(); // 204 means "No Content"
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred' });
+  }
 });
-
-});
-
 
 
 
