@@ -1,22 +1,17 @@
 import React from 'react'
-import ReactDOM from "react-dom";
 import { useForm } from "react-hook-form";
 
-import "./styles.css";
 
 
 
 
 function FormProfile() {
-
-const {
-
-  register,
-  handleSubmit,
-  watch,
-  formState: { errors }
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors }
   } = useForm();
-}
 
 
 const onSubmit = (data) => {
@@ -26,13 +21,10 @@ const onSubmit = (data) => {
   console.log(watch("example")); 
 
 
-
-
-
   return (
     <div>
      
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className='formprofile' onSubmit={handleSubmit(onSubmit)}>
       <label>First Name</label>
       <input
         {...register("first_name", {
@@ -70,14 +62,11 @@ const onSubmit = (data) => {
         <p>Password must be min 9 letters or numbers mix</p>
       )}
  
-
       <input type="submit" />
     </form>
 
-
-
     </div>
-  )
+)}
 
 
 export default FormProfile
