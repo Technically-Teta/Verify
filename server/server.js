@@ -57,11 +57,19 @@ try{
 
 })
 
+// FRUIT API  api/fruit/all
+app.get('/api/fruit ', async (req, res) =>{
+  const URL = "https://www.fruityvice.com/api/fruit/all";
+  try {
+    const apiRequest = await fetch(URL);
+    const fruitInfo = await apiRequest.json();
+    console.log(fruitInfo)
+    res.send(fruitInfo.name);
+  } catch (err){
+    console.log(err);
+  }
 
-
-
-
-
+})
 
 
 
