@@ -53,7 +53,7 @@ const onSubmit = (data) => {
       {errors?.lastName?.type === "pattern" && (
         <p>Alphabetical characters only</p>
       )}
-      <label>Username</label>a
+      <label>Username</label>
       <input {...register("username", { pattern: /^[a-zA-Z0-9]+$/i })} />
       {errors.username && (
         <p>Use a mix of letters and numbers for your username</p>
@@ -64,11 +64,12 @@ const onSubmit = (data) => {
         aria-invalid={errors.mail ? "true" : "false"}
       />
       {errors.mail && <p role="alert">{errors.mail.message}</p>}
-
-
-     
-
-
+      <label>Password</label>
+      <input {...register("password", {pattern: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/})} />
+      {errors.username && (
+        <p>Password must be min 9 letters or numbers mix</p>
+      )}
+ 
 
       <input type="submit" />
     </form>
