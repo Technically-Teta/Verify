@@ -54,7 +54,7 @@ const onSubmit = (data) => {
         <p>Alphabetical characters only</p>
       )}
       <label>Username</label>a
-      <input {...register("username", { pattern: /^[A-Za-z]+$/i })} />
+      <input {...register("username", { pattern: /^[a-zA-Z0-9]+$/i })} />
       {errors.username && (
         <p>Use a mix of letters and numbers for your username</p>
       )}
@@ -66,7 +66,8 @@ const onSubmit = (data) => {
       {errors.mail && <p role="alert">{errors.mail.message}</p>}
 
 
-  
+     
+
 
 
       <input type="submit" />
