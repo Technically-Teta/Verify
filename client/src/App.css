@@ -45,7 +45,11 @@
 .formprofile {
   max-width: 500px;
   margin: 0 auto;
-  background: #2a47ea;
+  background: #0ba3ab;
+  border-radius: 2%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 }
 
 h1 {
