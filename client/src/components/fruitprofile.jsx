@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import BibleCard from "./biblecard";
+import FruitCard from "./fruitcard";
 
 
-const Bible = () => {
+const FruitProfile = () => {
 
     const [fruits, setFruits] = useState([]);
 
@@ -24,11 +24,11 @@ const Bible = () => {
                 <span>What's your fav fruit?</span>/{fruits.length}
             </div>
             {fruits.map((fruits, index) => {
-                return <BibleCard key={index} fruits={fruits} />
+                return <FruitCard key={index} fruits={fruits} />
             })}
         </div>
     )
 
 }
 
-export default Bible;
+export default FruitProfile;
