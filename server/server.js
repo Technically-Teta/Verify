@@ -29,48 +29,48 @@ app.get('/', (req, res) => {
 // create the GET requests
 app.get('/api/users', async (req,res) => {
 
-//   try {
-//     const { rows: users } = await db.query('SELECT * FROM users').catch(err =>{(console.log('error with db query',err))});
+  try {
+    const { rows: users } = await db.query('SELECT * FROM users').catch(err =>{(console.log('error with db query',err))});
  
-//     console.debug('users)', users);
-//     res.send(users);
-//   } catch (e) {
-//     console.debug({e})
-//     return res.status(400).json({ e });
-//   }
-// });
+    console.debug('users)', users);
+    res.send(users);
+  } catch (e) {
+    console.debug({e})
+    return res.status(400).json({ e });
+  }
+});
 
-try{
-  const users = [
+// try{
+//   const users = [
 
-      {id:1, first_name:'John',last_name: 'Doe',username:'johndoe', email:'john@example.com', password:'hashed_password_1'} ,
-      {id:2, first_name:'Jane',last_name: 'Smith',username:'janesmith',email:'jane@example.com', password:'hashed_password_2'},
-      {id:3, first_name:'Bob', last_name:'Johnson', username:'bobjohnson', email:'bob@example.com', password:'hashed_password_3'},
-      {id:4, first_name:'Alice',last_name: 'Williams', username:'alicewilliams', email:'alice@example.com', password: 'hashed_password_4'}
+//       {id:1, first_name:'John',last_name: 'Doe',username:'johndoe', email:'john@example.com', password:'hashed_password_1'} ,
+//       {id:2, first_name:'Jane',last_name: 'Smith',username:'janesmith',email:'jane@example.com', password:'hashed_password_2'},
+//       {id:3, first_name:'Bob', last_name:'Johnson', username:'bobjohnson', email:'bob@example.com', password:'hashed_password_3'},
+//       {id:4, first_name:'Alice',last_name: 'Williams', username:'alicewilliams', email:'alice@example.com', password: 'hashed_password_4'}
         
-    ];
-  res.json(users);
+//     ];
+//   res.json(users);
 
-} catch(error){
-  console.log(error);
-}   
+// } catch(error){
+//   console.log(error);
+// }   
 
-})
+// })
 
 // FRUIT API  api/fruit/all
-app.get('/api/fruit ', async (req, res) =>{
+
+app.get('/api/fruit', async (req, res) => {
   const URL = "https://www.fruityvice.com/api/fruit/all";
   try {
     const apiRequest = await fetch(URL);
     const fruitInfo = await apiRequest.json();
-    console.log(fruitInfo)
-    res.send(fruitInfo.name);
-  } catch (err){
+    const names = fruitInfo.map(item => item.name); // Extract names from the array of objects
+    console.log(names);
+    res.send(names);
+  } catch (err) {
     console.log(err);
   }
-
-})
-
+});
 
 
 

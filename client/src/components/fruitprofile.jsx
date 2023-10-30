@@ -11,6 +11,7 @@ const FruitProfile = () => {
             .then((response) => response.json())
             .then(data => {
                 setFruits(data);
+                console.log(data);
             })
     }
 
