@@ -30,3 +30,8 @@ You can follow these instructions and code along with the video - [setup instruc
 11. Both servers should now run with `npm start`
 12. Go to localhost:3000 and you should see something like this:
 ![You will something like this in your terminal.](https://github.com/Yosolita1978/screenshoots/blob/main/template/Screen%20Shot%202022-10-30%20at%207.30.21%20PM.png?raw=true)
+
+
+
+* Pitch: https://docs.google.com/document/d/1r87qAALwLe98WgqZQr2OkoA0D1XjICFgOmP3KIDlddI/edit
+* Trello, includes time management hour x hour estimations: https://trello.com/b/6iG7N9Y8/final-project-verify-id
