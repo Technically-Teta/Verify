@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
           <div className={"fruit-section"}>
             <Card>     
                                                             
-            <Card.Body><div className='book-text'>{props.fruit.name}</div></Card.Body>
+            <Card.Body><div className='fruit-text'>{props.fruits}</div></Card.Body>
            
             
             </Card>

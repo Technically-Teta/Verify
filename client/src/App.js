@@ -6,6 +6,8 @@ import Loading from "./components/loading";
 import { Route, Routes, Link } from 'react-router-dom';
 import FormProfile from "./components/formprofile";
 import FruitProfile from "./components/fruitprofile";
+import particlesOptions from "./particlesjs-config (1).json";
+import Particles from "react-tsparticles";
 
 function App() {
 
@@ -17,6 +19,7 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
+       <Particles options={particlesOptions}/>
       <NavBar />
       <FormProfile />
       <div className="container flex-grow-1">
@@ -24,7 +27,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
       <Route path="api/me" element={<FormProfile user={user}/>} />
-      <Route path="api/fruitprofile" element={<FruitProfile user={user}/>} />
+      <Route path="/fruitprofile" element={<FruitProfile user={user}/>} />
       </Routes>
       </div>
     </div>

@@ -7,7 +7,7 @@ const FruitProfile = () => {
     const [fruits, setFruits] = useState([]);
 
     const loadData = () => {
-        fetch('http://localhost:3003/api/fruit/')
+        fetch('/api/fruit/')
             .then((response) => response.json())
             .then(data => {
                 setFruits(data);
