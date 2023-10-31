@@ -26,6 +26,7 @@ function App() {
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
+      <Route path="/" element={<ParticlesBackground user={user}/>} />
       <Route path="api/me" element={<FormProfile user={user}/>} />
       <Route path="/fruitprofile" element={<FruitProfile user={user}/>} />
       </Routes>

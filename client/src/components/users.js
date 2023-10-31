@@ -75,7 +75,7 @@ function Users(props) {
         {users.map((user) => {
           if(user.id === edituserId){
             //something needs to happento allow the user edit that existing user
-            // At some point I need to pass the update function as props - connect this to the backend
+            // passed update function
             return <Form initialuser={user} saveuser={updateuser}/>
           } else{
             return (
