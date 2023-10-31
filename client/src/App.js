@@ -6,6 +6,7 @@ import Loading from "./components/loading";
 import { Route, Routes, Link } from 'react-router-dom';
 import FormProfile from "./components/formprofile";
 import FruitProfile from "./components/fruitprofile";
+import ParticlesBackground from "./components/particlesbackground";
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-   
+      <ParticlesBackground />
       <NavBar />
       <FormProfile />
       <div className="container flex-grow-1">
