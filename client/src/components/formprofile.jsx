@@ -60,9 +60,22 @@ const postUser = (newUser) => {
     })
 }
 
+  //A function to handle the Update request(PUT)
+const updateUser = (existingUser)=>{
+  return fetch(`/api/users/${existingUser.id}`,{
+    method: 'PUT',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify(existingUser)
+  }).then((response) => {
+    return response.json()
+}).then((data) => {
+  console.log("Hello I am the put request", data);
+  props.saveUser(data);
+});
+}
 
 
-  //A function to handle the Update request
+
 
 
 // submit the form for updates and for changes 
