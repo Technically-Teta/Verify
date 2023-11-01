@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 
-
-function FormProfile() {
+const FormProfile = (props)=> {
   const {
     register,
     handleSubmit,
@@ -10,7 +11,61 @@ function FormProfile() {
     formState: { errors }
   } = useForm();
 
+ // variable to hold the initital user info which will be empty fields for input assigned to props
+const {inititalUser} = {id:null, first_name:"", last_name:"", username:"", email:"" , password:""}
 
+ // This is the intital state  of the form
+const [user, setUser] = useState(inititalUser);
+
+//create functions that handle the event of the user typing into the form
+const handleFirstNameChange = (event) => {
+  const first_name = event.target.value;
+  setUser((user) => ({ ...user, first_name }));
+
+  const handleLastnameChange = (event) => {
+    const last_name = event.target.value;
+    setUser((user) => ({ ...user, last_name }));
+  };
+
+  const handleUserNameChange = (event) => {
+    const username = event.target.value;
+    setUser((user) => ({ ...user, username }));
+  };
+
+  const handleEmailChange = (event) => {
+    const email = event.target.value;
+    setUser((user) => ({ ...user, email }));
+  };
+
+
+  const handlePasswordChange = (event) => {
+    const username = event.target.value;
+    setUser((user) => ({ ...user, password }));
+  };
+
+
+  //A function to handle the post request
+const postUser = (newUser) => {
+  return fetch("/api/users", {
+    method: "POST",
+    headers: {"Content-Type": "application/json"  },
+    body: JSON.stringify(newUser)
+  })
+    .then((response)=>{
+      return response.json()
+    })
+    .then((data)=>{
+      console.log("Hello I am the post request", data);
+      props.saveUser(data)
+    })
+}
+
+
+
+  //A function to handle the Update request
+
+
+// submit the form for updates and for changes 
 const onSubmit = (data) => {
   alert(JSON.stringify(data));
   }; // onsubmit will invoke after successful validation
@@ -20,7 +75,12 @@ const onSubmit = (data) => {
 
   return (
     <div>
+      <div className="signup">
+      <h2>Sign up for an Account here!</h2> 
+        
+      <FontAwesomeIcon icon={faUser} size="2xl" style={{color: "#36d3d0",}} />  
      
+      </div>
     <form className='formprofile' onSubmit={handleSubmit(onSubmit)}>
       <label>First Name</label>
       <input
@@ -63,7 +123,7 @@ const onSubmit = (data) => {
     </form>
 
     </div>
-)}
+)}}
 
 
 export default FormProfile
