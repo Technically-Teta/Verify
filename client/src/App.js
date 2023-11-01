@@ -27,7 +27,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
       <Route path="/" element={<ParticlesBackground user={user}/>} />
-      <Route path="api/me" element={<FormProfile user={user}/>} />
+      <Route path="api/form" element={<FormProfile user={user}/>} />
       <Route path="/fruitprofile" element={<FruitProfile user={user}/>} />
       </Routes>
       </div>
