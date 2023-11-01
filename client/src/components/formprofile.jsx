@@ -1,22 +1,17 @@
-import React, { useState , useEffect} from 'react'
-import { useForm } from "react-hook-form";
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
  
 
 const FormProfile = (props)=> {
-  const {
-    handleSubmit,
-    register,
-   
-    formState: { errors }
-  } = useForm();
+
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
-const {inititalUser} = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""}
+const {inititalUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""}} = props;
 
  // This is the intital state  of the form
 const [user, setUser] = useState(inititalUser);
+const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
 
 //create functions that handle the event of the user typing into the form
 const handleFirstNameChange = (event) => {
@@ -47,20 +42,34 @@ const handleFirstNameChange = (event) => {
 
 
   //A function to handle the post request
+
 const postUser = (newUser) => {
-  return fetch("/api/users", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"  },
-    body: JSON.stringify(newUser)
+  return fetch('/api/users', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newUser),
   })
-    .then((response)=>{
-      return response.json()
+    .then((response) => {
+      return response.json();
     })
-    .then((data)=>{
-      console.log("Hello I am the post request", data);
-      props.saveUser(data)
+    .then((data) => {
+      console.log('Hello, I am the post request', data);
+      props.saveUser(data);
+      setSubmitMessage('User information submitted successfully'); // Set the success message
+      setUser(inititalUser); // Clear the form
     })
-}
+    .catch((error) => {
+      console.error('Error submitting user information', error);
+      setSubmitMessage('Error submitting user information'); // Set an error message
+    });
+};
+
+
+
+
+
+
+
 
   //A function to handle the Update request(PUT)
 const updateUser = (existingUser)=>{
@@ -78,7 +87,7 @@ const updateUser = (existingUser)=>{
 
 
 // submit the form for updates and for changes 
-const onSubmit = (e) => {
+const handleSubmit = (e) => {
   e.preventDefault();
   if(user.id){
     updateUser(user);
@@ -88,14 +97,6 @@ const onSubmit = (e) => {
   };   
 
  
-useEffect(() => {
-  postUser();
-}, []);
-
-
-useEffect(() => {
-  postUser();
-}, []); // 
 
 
   return (
@@ -106,50 +107,61 @@ useEffect(() => {
       <FontAwesomeIcon icon={faUser} size="2xl" style={{color: "#36d3d0",}} />  
      
       </div>
-    <form className='formprofile' onSubmit={handleSubmit(onSubmit)}>
+    <form className='formprofile' onSubmit={handleSubmit}>
       <label>First Name</label>
+
       <input
+      type='text'
+      id='add-user'
+      placeholder='First Name'
+      required
+      value={user.first_name}
        onChange={handleFirstNameChange}
-        {...register("first_name", {
-          required: true,
-          maxLength: 20,
-          pattern: /^[A-Za-z]+$/i
-        })}
       />
 
-      {errors?.first_name?.type === "required" && <p>This field is required</p>}
-      {errors?.first_name?.type === "maxLength" && (
-        <p>First name cannot exceed 20 characters</p>
-      )}
-      {errors?.first_name?.type === "pattern" && (
-        <p>Alphabetical characters only</p>
-      )}
-      <label>Last Name</label>
-      <input onChange={handleLastnameChange} {...register("last_name", { pattern: /^[A-Za-z]+$/i })} />
-      {errors?.last_name?.type === "pattern" && (
-        <p>Alphabetical characters only</p>
-      )}
-      <label>Username</label>
-      <input onChange={handleUserNameChange} {...register("username", { pattern: /^[a-zA-Z0-9]+$/i })} />
-      {errors.username && (
-        <p>Use a mix of letters and numbers for your username</p>
-      )}
-      <label>Email</label>
-      <input onChange={handleEmailChange}
-        {...register("email", { required: "Email Address is required" })}
-        aria-invalid={errors.email ? "true" : "false"}
+     <label>Last Name</label>
+      <input
+      type='text'
+      id='add-last'
+      required
+      value={user.last_name}
+       onChange={handleLastnameChange}
+      
       />
-      {errors.email && <p role="alert">{errors.email.message}</p>}
+      
+      <label>Username</label>
+      <input
+      type='text'
+      id='add-username'
+      required
+      value={user.username}
+       onChange={handleUserNameChange}
+      
+      />
+      
+      <label>Email</label>
+      <input
+      type='text'
+      id='add-email'
+      value={user.email}
+       onChange={handleEmailChange}
+      
+      />
+      
       <label>Password</label>
-      <input onChange={handlePasswordChange} {...register("password", {pattern: /^[a-zA-Z0-9]{8,}$/})} />
-      {errors.password && (
-        <p>Password must be min 8 letters or numbers mix</p>
-      )}
+      <input
+      type='text'
+      id='add-password'
+      value={user.email}
+       onChange={handlePasswordChange}
+      
+      />
+      
       <input type='submit' />
       
-      
     </form>
-   
+    {submitMessage && <p>{submitMessage}</p>} {"Thank you for adding your information, it has been successfully added"}
+
    </div>
 )}
 
