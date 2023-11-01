@@ -75,13 +75,16 @@ const updateUser = (existingUser)=>{
 }
 
 
-
-
-
 // submit the form for updates and for changes 
-const onSubmit = (data) => {
-  alert(JSON.stringify(data));
-  }; // onsubmit will invoke after successful validation
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if(user.id){
+    updateUser(user);
+  }else{
+    postUser(user)
+  }
+
+  };   
 
   console.log(watch("example")); 
 
@@ -97,12 +100,14 @@ const onSubmit = (data) => {
     <form className='formprofile' onSubmit={handleSubmit(onSubmit)}>
       <label>First Name</label>
       <input
+      onChange={handleFirstNameChange}
         {...register("first_name", {
           required: true,
           maxLength: 20,
           pattern: /^[A-Za-z]+$/i
         })}
       />
+
       {errors?.firstName?.type === "required" && <p>This field is required</p>}
       {errors?.firstName?.type === "maxLength" && (
         <p>First name cannot exceed 20 characters</p>
@@ -131,10 +136,9 @@ const onSubmit = (data) => {
       {errors.username && (
         <p>Password must be min 9 letters or numbers mix</p>
       )}
- 
       <input type="submit" />
     </form>
-
+    <button type='submit'>{!user.id ? "ADD" : "SAVE"}</button>
     </div>
 )}}
 
