@@ -5,13 +5,16 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 
 const FormProfile = (props)=> {
 
-
  // variable to hold the initital user info which will be empty fields for input assigned to props
 const {inititalUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""}} = props;
 
  // This is the intital state  of the form
 const [user, setUser] = useState(inititalUser);
 const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
+
+//passes the newUser prop to the userprofile
+const [newUser, setNewUser] = useState(true);
+
 
 //create functions that handle the event of the user typing into the form
 const handleFirstNameChange = (event) => {
@@ -65,12 +68,6 @@ const postUser = (newUser) => {
 };
 
 
-
-
-
-
-
-
   //A function to handle the Update request(PUT)
 const updateUser = (existingUser)=>{
   return fetch(`/api/users/${existingUser.id}`,{
@@ -85,10 +82,11 @@ const updateUser = (existingUser)=>{
 });
 }
 
-
 // submit the form for updates and for changes 
 const handleSubmit = (e) => {
   e.preventDefault();
+  setNewUser(false);
+  console.log(newUser)
   if(user.id){
     updateUser(user);
   }else{
@@ -97,7 +95,6 @@ const handleSubmit = (e) => {
   };   
 
  
-
 
   return (
     <div>  
