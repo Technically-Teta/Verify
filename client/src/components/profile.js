@@ -1,7 +1,8 @@
 import React from 'react';
 
+// Component displays the user from the database whom recently created an account
 const Profile = (props) => {
-  let user = props.user;
+  let user = props.users;
   console.log(user);
  
 

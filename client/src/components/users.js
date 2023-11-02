@@ -3,7 +3,7 @@ import Form from "./form";
 
 function Users(props) {
   let user = props.users;
-  // this is my original state with an array of users
+  // this is the original state with an array of users
   const [users, setusers] = useState([]);
 
   // New State to contro the existing user Id that the user wants to edit
@@ -22,7 +22,7 @@ function Users(props) {
     loadusers();
   }, []);
 
-  //A function to handle the Delete funtionality
+  //A function to handle the Delete funtionality on an individual user
   const onDelete = (user) =>{
     return fetch(`/api/users/${user.id}`, {
       method: "DELETE"
