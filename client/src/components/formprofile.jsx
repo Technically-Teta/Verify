@@ -14,7 +14,7 @@ const [submitMessage, setSubmitMessage] = useState(''); // State for the submit 
 
 //passes the newUser prop to the userprofile
 const [newUser, setNewUser] = useState(true);
-
+const [newUserId, setNewUserId] = useState(null);
 
 //create functions that handle the event of the user typing into the form
 const handleFirstNameChange = (event) => {
@@ -82,10 +82,12 @@ const updateUser = (existingUser)=>{
 });
 }
 
-// submit the form for updates and for changes 
+// submit the form for updates and for changes(post) 
 const handleSubmit = (e) => {
   e.preventDefault();
   setNewUser(false);
+  setNewUserId(newUserId);
+  
   console.log(newUser)
   if(user.id){
     updateUser(user);

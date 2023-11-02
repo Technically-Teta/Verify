@@ -1,6 +1,6 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
-
+import { useEffect,useState } from 'react';
 
 
 //Component to manage the new user who is added to the app 

@@ -7,7 +7,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import FormProfile from "./components/formprofile";
 import FruitProfile from "./components/fruitprofile";
 import ParticlesBackground from "./components/particlesbackground";
-import Profile from "./components/profile";
+import Userprofile from "./components/userprofile";
 
 function App() {
 
@@ -30,7 +30,8 @@ function App() {
       <Route path="/" element={<ParticlesBackground user={user}/>} />
       <Route path="api/form" element={<FormProfile user={user}/>} />
       <Route path="/fruitprofile" element={<FruitProfile/>} />
-      <Route path="/profile" element={<Profile/>} />
+      <Route path="/profile" element={<Userprofile userId={newUserId} newUser={newUser} />} />
+
       </Routes>
       </div>
     </div>
