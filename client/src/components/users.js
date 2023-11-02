@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import Form from "./form";
 
 function Users(props) {
-  let user = props.user;
+  let user = props.users;
   // this is my original state with an array of users
   const [users, setusers] = useState([]);
 

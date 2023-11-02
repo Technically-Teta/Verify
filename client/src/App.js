@@ -7,7 +7,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 import FormProfile from "./components/formprofile";
 import FruitProfile from "./components/fruitprofile";
 import ParticlesBackground from "./components/particlesbackground";
-
+import Profile from "./components/profile";
 
 function App() {
 
@@ -22,7 +22,7 @@ function App() {
       <ParticlesBackground />
       <NavBar />
       <FormProfile />
-      <FruitProfile/>
+   
       <div className="container flex-grow-1">
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
@@ -30,6 +30,7 @@ function App() {
       <Route path="/" element={<ParticlesBackground user={user}/>} />
       <Route path="api/form" element={<FormProfile user={user}/>} />
       <Route path="/fruitprofile" element={<FruitProfile/>} />
+      <Route path="/profile" element={<Profile/>} />
       </Routes>
       </div>
     </div>

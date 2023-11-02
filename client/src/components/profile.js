@@ -9,10 +9,10 @@ const Profile = (props) => {
     <div>
       <div className="row align-items-center profile-header">
         <div className="col-md text-center text-md-left">
-          <h2>{user.name}</h2>
+          <h2>{user.first_name}</h2>
         </div>
         <div className="col-md text-center text-md-left">
-          <h2>{user.nickname}</h2>
+          <h2>{user.last_name}</h2>
         </div>
         <div className="col-md text-center text-md-left">
           <h2>{user.email}</h2>

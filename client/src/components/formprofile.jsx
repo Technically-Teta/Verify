@@ -157,10 +157,10 @@ const handleSubmit = (e) => {
       
       />
       
-      <input type='submit' />
+      <input type='submit' />{submitMessage && <p>{submitMessage}</p>} 
       
     </form>
-    {submitMessage && <p>{submitMessage}</p>} {"Thank you for adding your information, it has been successfully added"}
+    
 
    </div>
 )}
