@@ -1,27 +1,24 @@
 import React from 'react'
 import Table from 'react-bootstrap/Table';
-import { useEffect,useState } from 'react';
+import { useEffect } from 'react';
 
 
 //Component to manage the new user who is added to the app 
 //Passes in the props 
-const Userprofile = ({userId,newUser}) =>{
+const Userprofile = ({userId,newUser,setNewUser}) =>{
 
- //sets state to control actions if user is added   
-const [user, setUser] = useState(null)
+
 
 // checks whether the newUser state variable is falsy (undefined or null).
 useEffect(() =>{
     if(!newUser){
-        fetch(`/api/users/${userId} `)
+        fetch(`/api/users/${newUser.id} `)
             .then(response => response.json())
-            .then(data => setUser(data));
+            .then(data => setNewUser(data));
         }
     }, [userId, newUser]);
   
-    if (!user) {
-      return <div>Loading...</div>;
-    }
+
   
     if (newUser) {
       return <div>New user created with ID {userId}</div>;
@@ -38,11 +35,11 @@ useEffect(() =>{
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name: {user.first_name}</th>
-          <th>Last Name: {user.last_name}</th>
-          <th>Username: {user.username}</th>
-          <th>Email: {user.email}</th>
-          <th>Password: {user.password}</th>
+          <th>First Name: {newUser.first_name}</th>
+          <th>Last Name: {newUser.last_name}</th>
+          <th>Username: {newUser.username}</th>
+          <th>Email: {newUser.email}</th>
+          <th>Password: {newUser.password}</th>
         </tr>
       </thead>
       <tbody>

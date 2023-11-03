@@ -3,49 +3,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
  
 
-const FormProfile = (props)=> {
+const UserForm  = ({setNewUser,newUser})=> {
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
-const {inititalUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""}} = props;
+//const {inititalUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""}} = props;
+
+const initialUser = newUser ? newUser :{id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
 
  // This is the intital state  of the form
-const [user, setUser] = useState(inititalUser);
+const [userForm, setUserForm] = useState(initialUser);
 const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
 
 //passes the newUser prop to the userprofile
-const [newUser, setNewUser] = useState(true);
 const [newUserId, setNewUserId] = useState(null);
 
 //create functions that handle the event of the user typing into the form
 const handleFirstNameChange = (event) => {
   const first_name = event.target.value;
-  setUser((user) => ({ ...user, first_name }));
+  setUserForm((userForm) => ({ ...userForm, first_name }));
 };
 
   const handleLastnameChange = (event) => {
     const last_name = event.target.value;
-    setUser((user) => ({ ...user, last_name }));
+    setUserForm((userForm) => ({ ...userForm, last_name }));
   };
 
   const handleUserNameChange = (event) => {
     const username = event.target.value;
-    setUser((user) => ({ ...user, username }));
+    setUserForm((userForm) => ({ ...userForm, username }));
   };
 
   const handleEmailChange = (event) => {
     const email = event.target.value;
-    setUser((user) => ({ ...user, email }));
+    setUserForm((userForm) => ({ ...userForm, email }));
   };
 
 
   const handlePasswordChange = (event) => {
     const password = event.target.value;
-    setUser((user) => ({ ...user, password }));
+    setUserForm((userForm) => ({ ...userForm, password }));
   };
 
 
   //A function to handle the post request
-
 const postUser = (newUser) => {
   return fetch('/api/users', {
     method: 'POST',
@@ -57,9 +57,9 @@ const postUser = (newUser) => {
     })
     .then((data) => {
       console.log('Hello, I am the post request', data);
-      props.saveUser(data);
+      setNewUser(data);
       setSubmitMessage('User information submitted successfully'); // Set the success message
-      setUser(inititalUser); // Clear the form
+      setUserForm(initialUser); // Clear the form
     })
     .catch((error) => {
       console.error('Error submitting user information', error);
@@ -78,7 +78,7 @@ const updateUser = (existingUser)=>{
     return response.json()
 }).then((data) => {
   console.log("Hello I am the put request", data);
-  props.saveUser(data);
+ setNewUser(data);
 });
 }
 
@@ -89,10 +89,10 @@ const handleSubmit = (e) => {
   setNewUserId(newUserId);
   
   console.log(newUser)
-  if(user.id){
-    updateUser(user);
+  if(userForm.id){
+    updateUser(userForm);
   }else{
-    postUser(user)
+    postUser(userForm)
   }
   };   
 
@@ -114,7 +114,7 @@ const handleSubmit = (e) => {
       id='add-user'
       placeholder='First Name'
       required
-      value={user.first_name}
+      value={userForm.first_name}
        onChange={handleFirstNameChange}
       />
 
@@ -123,7 +123,7 @@ const handleSubmit = (e) => {
       type='text'
       id='add-last'
       required
-      value={user.last_name}
+      value={userForm.last_name}
        onChange={handleLastnameChange}
       
       />
@@ -133,7 +133,7 @@ const handleSubmit = (e) => {
       type='text'
       id='add-username'
       required
-      value={user.username}
+      value={userForm.username}
        onChange={handleUserNameChange}
       
       />
@@ -142,7 +142,7 @@ const handleSubmit = (e) => {
       <input
       type='text'
       id='add-email'
-      value={user.email}
+      value={userForm.email}
        onChange={handleEmailChange}
       
       />
@@ -151,7 +151,8 @@ const handleSubmit = (e) => {
       <input
       type='text'
       id='add-password'
-      value={user.email}
+      required
+      value={userForm.password}
        onChange={handlePasswordChange}
       
       />
@@ -165,4 +166,4 @@ const handleSubmit = (e) => {
 )}
 
 
-export default FormProfile
+export default UserForm
