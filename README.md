@@ -17,17 +17,17 @@ https://drive.google.com/file/d/155fS61OHHWl7D5L6hmRaHDmmXFl-3w_k/view?usp=shari
    
    
 ### To work on your frontend
-*Go to localhost:3000 to see the main  page
-*The Main page (CSS still loading) will display and say the app name`
-*Form page shows  the form that the new user uses to create their page
-*Form will open up the user profile page
+* Go to localhost:3000 to see the main  page
+* The Main page (CSS still loading) will display and say the app name`
+* Form page shows  the form that the new user uses to create their page
+* Form will open up the user profile page
 * Buttons on the Profile page will show the Organization forms and the Volunteer forms to have the user complete them
 
 
 ### Nice-to-Have
-*I would like the user to receive a QR code after completing the full registration.
-*I want an animated home page to show the logo
-*OAuth to link to the user form to use it for account login for continued use.
+* I would like the user to receive a QR code after completing the full registration.
+* I want an animated home page to show the logo
+* OAuth to link to the user form to use it for account login for continued use.
 
 
 ### Links
