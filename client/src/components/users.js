@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Form from "./form";
+import UserForm from "./userform";
 
 function Users(props) {
   let user = props.users;
@@ -76,7 +76,7 @@ function Users(props) {
           if(user.id === edituserId){
             //something needs to happento allow the user edit that existing user
             // passed update function
-            return <Form initialuser={user} saveuser={updateuser}/>
+            return <UserForm initialuser={user} saveuser={updateuser}/>
           } else{
             return (
               <li key={user.id}>
@@ -88,7 +88,7 @@ function Users(props) {
           }
         })}
       </ul>
-      {!user ? (<h4>Please signup to add users to our DB </h4>) : (<Form saveuser={adduser} />)}
+      {!user ? (<h4>Please signup to add users to our DB </h4>) : (<UserForm saveuser={adduser} />)}
       
     </div>
   );
