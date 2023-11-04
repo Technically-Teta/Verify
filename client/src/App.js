@@ -1,10 +1,13 @@
 import "./App.css";
 import NavBar from "./components/nav-bar";
-import Students from "./components/students";
-import Profile from "./components/profile";
+import Users from "./components/users";
 import { useAuth0 } from '@auth0/auth0-react';
 import Loading from "./components/loading";
 import { Route, Routes, Link } from 'react-router-dom';
+import FormProfile from "./components/formprofile";
+import FruitProfile from "./components/fruitprofile";
+import ParticlesBackground from "./components/particlesbackground";
+import Userprofile from "./components/userprofile";
 
 function App() {
 
@@ -16,12 +19,19 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
+      <ParticlesBackground />
       <NavBar />
+      <FormProfile />
+   
       <div className="container flex-grow-1">
-      {!user ? <span>Hello from Techtonica From DEV!!!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
+      {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
-      <Route path="/" element={<Students user={user}/>} />
-      <Route path="api/me" element={<Profile user={user}/>} />
+      <Route path="/" element={<Users user={user}/>} />
+      <Route path="/" element={<ParticlesBackground user={user}/>} />
+      <Route path="api/form" element={<FormProfile user={user}/>} />
+      <Route path="/fruitprofile" element={<FruitProfile/>} />
+      <Route path="/profile" element={<Userprofile userId={newUserId} newUser={newUser} />} />
+
       </Routes>
       </div>
     </div>
