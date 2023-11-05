@@ -1,5 +1,4 @@
 import "./App.css";
-import NavBar from "./components/nav-bar";
 import Users from "./components/users";
 import { useAuth0 } from '@auth0/auth0-react';
 import { Route, Routes, Link } from 'react-router-dom';
@@ -19,8 +18,8 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-      <ParticlesBackground />
-      <NavBar />
+   
+  
     
    
       <div className="container flex-grow-1">
@@ -30,7 +29,8 @@ function App() {
       <Route path="api/form" element={<UserForm user={user} setNewUser={setNewUser} newUser={newUser} />} />
       <Route path="/fruitprofile" element={<FruitProfile/>} />
       <Route path="/profile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
-
+      <Route path="users" component={Users} />
+      <Route path="/background" element={<ParticlesBackground />}/>
       </Routes>
       </div>
     </div>

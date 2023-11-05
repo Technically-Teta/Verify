@@ -40,22 +40,6 @@ app.get('/api/users', async (req,res) => {
   }
 });
 
-// try{
-//   const users = [
-
-//       {id:1, first_name:'John',last_name: 'Doe',username:'johndoe', email:'john@example.com', password:'hashed_password_1'} ,
-//       {id:2, first_name:'Jane',last_name: 'Smith',username:'janesmith',email:'jane@example.com', password:'hashed_password_2'},
-//       {id:3, first_name:'Bob', last_name:'Johnson', username:'bobjohnson', email:'bob@example.com', password:'hashed_password_3'},
-//       {id:4, first_name:'Alice',last_name: 'Williams', username:'alicewilliams', email:'alice@example.com', password: 'hashed_password_4'}
-        
-//     ];
-//   res.json(users);
-
-// } catch(error){
-//   console.log(error);
-// }   
-
-// })
 
 // FRUIT API  api/fruit/all
 
