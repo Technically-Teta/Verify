@@ -1,38 +1,48 @@
 import "./App.css";
-import NavBar from "./components/nav-bar";
+import { Helmet } from 'react-helmet';
 import Users from "./components/users";
 import { useAuth0 } from '@auth0/auth0-react';
-import Loading from "./components/loading";
 import { Route, Routes, Link } from 'react-router-dom';
-import FormProfile from "./components/formprofile";
+import UserForm from "./components/userform";
 import FruitProfile from "./components/fruitprofile";
-import ParticlesBackground from "./components/particlesbackground";
-import Userprofile from "./components/userprofile";
+import UserProfile from "./components/userprofile";
+import { useState } from "react";
+import SVGAnimation from "./components/svganimation";
+
 
 function App() {
+  const [newUserId, setNewUserId] = useState(null);
+  const [newUser, setNewUser] = useState({id:"13", first_name:"Sam", last_name:"Browm", username:"test", email:"test@gmail.com" , password:"test"});
 
-  const { isLoading } = useAuth0();
   const { user } = useAuth0();
-  if (isLoading) {
-    return <Loading />;
-  }
+  
+  
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-      <ParticlesBackground />
-      <NavBar />
-      <FormProfile />
-   
+     <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Merriweather:ital,wght@1,700&family=Nabla&family=Poppins:wght@200;300&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+
+
       <div className="container flex-grow-1">
+
+
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
-      <Route path="/" element={<ParticlesBackground user={user}/>} />
-      <Route path="api/form" element={<FormProfile user={user}/>} />
+      <Route path="api/form" element={<UserForm user={user} setNewUser={setNewUser} newUser={newUser} />} />
       <Route path="/fruitprofile" element={<FruitProfile/>} />
-      <Route path="/profile" element={<Userprofile userId={newUserId} newUser={newUser} />} />
-
+      <Route path="/profile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
+      <Route path="users" component={Users} />
+   
       </Routes>
+      <SVGAnimation />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 /* Replace with your SQL commands */
 
-DROP TABLE students;
+DROP TABLE volunteering;
 DROP TABLE users;
+DROP TABLE orgs;
