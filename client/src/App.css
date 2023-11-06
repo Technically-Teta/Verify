@@ -9,15 +9,26 @@ html::before, body::before {
   height: 100%;
   box-sizing: border-box;
   display: block;
+  border: 9px black ridge;
   background-color: #0a7d6f;
   background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
   z-index: -1; /* Place the overlay behind content */
+
+
+
+
+
+
 }
 
 * {
   padding: 0;
   margin: 0;
 }
+
+
+
+
 
 
 /* Rest of your CSS styles for .App and .background */

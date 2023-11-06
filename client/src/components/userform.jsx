@@ -69,7 +69,7 @@ const postUser = (newUser) => {
 
   //A function to handle the Update request(PUT)
 const updateUser = (existingUser)=>{
-  return fetch(`/api/users/${existingUser.id}`,{
+  return fetch(`http://localhost:8080/api/users/${existingUser.id}`,{
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(existingUser)

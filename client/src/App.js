@@ -38,7 +38,7 @@ function App() {
       <Route path="/" element={<Users user={user}/>} />
       <Route path="api/form" element={<UserForm user={user} setNewUser={setNewUser} newUser={newUser} />} />
       <Route path="/fruitprofile" element={<FruitProfile/>} />
-      <Route path="/profile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
+      <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users" component={Users} />
    
       </Routes>

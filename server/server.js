@@ -144,7 +144,7 @@ app.put('/api/users/:user_id', cors(), async (req, res) =>{
   console.log("In the server from the url - the user id", user_id);
   console.log("In the server, from the react - the user to be edited", updatedUser);
   // UPDATE users SET last_name = "something" WHERE id="16";
-  const query = `UPDATE users SET last_name=$1, first_name=$2, email=$3, password=$4, WHERE id=${user_id} RETURNING *`;
+  const query = `UPDATE users SET last_name=$1, first_name=$2, email=$3, password=$4 WHERE user_id=${user_id} RETURNING *`;
   const values = [updatedUser.last_name, updatedUser.first_name, updatedUser.email, updatedUser.password];
   try {
     const updated = await db.query(query, values);
@@ -176,7 +176,7 @@ app.put('/api/orgs/:org_id', cors(), async (req, res) =>{
     return res.status(400).json({e})
   }
 })
-
+ 
 app.put('/api/volunteering/:volunteering_id', cors(), async (req, res) =>{
   console.log(req.params);
   //This will be the id that I want to find in the DB - the user to be updated

@@ -1,5 +1,5 @@
 import React from 'react';
-import Table from 'react-bootstrap/Table';
+
 import { useEffect } from 'react';
 
 // Component to manage the new user who is added to the app
@@ -16,7 +16,7 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
   return (
     <div>
       
-        <Table striped bordered hover>
+   
           <thead>
             <tbody>
               <tr>
@@ -29,7 +29,7 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
               </tr>
             </tbody>
           </thead>
-        </Table>
+      
      
         <div>New user created with ID {userId}</div>
      
