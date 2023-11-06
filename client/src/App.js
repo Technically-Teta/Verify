@@ -1,12 +1,14 @@
 import "./App.css";
+import { Helmet } from 'react-helmet';
 import Users from "./components/users";
 import { useAuth0 } from '@auth0/auth0-react';
 import { Route, Routes, Link } from 'react-router-dom';
 import UserForm from "./components/userform";
 import FruitProfile from "./components/fruitprofile";
-import ParticlesBackground from "./components/particlesbackground";
 import UserProfile from "./components/userprofile";
 import { useState } from "react";
+import SVGAnimation from "./components/svganimation";
+
 
 function App() {
   const [newUserId, setNewUserId] = useState(null);
@@ -18,11 +20,19 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-   
-  
-    
-   
+     <Helmet>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Merriweather:ital,wght@1,700&family=Nabla&family=Poppins:wght@200;300&display=swap"
+          rel="stylesheet"
+        />
+      </Helmet>
+
+
       <div className="container flex-grow-1">
+
+
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
@@ -30,8 +40,9 @@ function App() {
       <Route path="/fruitprofile" element={<FruitProfile/>} />
       <Route path="/profile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users" component={Users} />
-      <Route path="/background" element={<ParticlesBackground />}/>
+   
       </Routes>
+      <SVGAnimation />
       </div>
     </div>
   );

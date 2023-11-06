@@ -6,7 +6,6 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 const UserForm  = ({setNewUser,newUser})=> {
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
-//const {inititalUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""}} = props;
 
 const initialUser = newUser ? newUser :{id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
 
@@ -100,10 +99,16 @@ const handleSubmit = (e) => {
 
   return (
     <div>  
-      <div className="signup">
-      <h2>Sign up for an Account here!</h2> 
+      <div className="signup"   >
+      
+        <h2>Sign up for an Account here!</h2> 
+
+         <br />
+       <div className='icon'>      
+       <FontAwesomeIcon icon={faUser} size="2xl" style={{color: "#36d3d0",}} />  
+       </div>
         
-      <FontAwesomeIcon icon={faUser} size="2xl" style={{color: "#36d3d0",}} />  
+    
      
       </div>
     <form className='formprofile' onSubmit={handleSubmit}>

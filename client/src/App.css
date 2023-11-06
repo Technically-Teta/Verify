@@ -1,5 +1,6 @@
-/* Create an overlay effect for all backgrounds 
-::before {
+/* Create an overlay effect for all backgrounds */
+/* Apply the overlay styles to the root element (e.g., <html> or <body>) */
+html::before, body::before {
   content: "";
   position: absolute;
   top: 0;
@@ -10,35 +11,25 @@
   display: block;
   background-color: #0a7d6f;
   background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
-  z-index: -1; /* Place the overlay behind content }*/
+  z-index: -1; /* Place the overlay behind content */
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.App {
+/* Rest of your CSS styles for .App and .background */
+.App, .background {
+  display: flex;
   text-align: center;
-  max-width: 600px;
   margin: 0 auto;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
-  
+  color: aliceblue;
 }
-
-
-
 
 
 
@@ -77,31 +68,26 @@
   }
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  position: relative; /* Add this line */
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 .signup{
   display: grid;
   align-items: center;
-  justify-content: auto;
+  justify-content: center;
+  color: aliceblue;
+  font-family: merriweather, arial, helvetica, sans-serif; 
+  font-size: x-large;
 }
+
+.icon{
+  display: grid;
+  place-items: center; /* This shorthand centers the content both vertically and horizontally */
+  width: 100%; /* Set the width to whatever you need */
+  margin-top: auto;
+}
+
+
 
 
 h3{
@@ -233,7 +219,9 @@ button {
 
 
 
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 

@@ -15,12 +15,12 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
 
   return (
     <div>
-      {newUser && newUser.first_name ? (
+      
         <Table striped bordered hover>
           <thead>
             <tbody>
               <tr>
-                <th>#</th>
+               
                 <th>First Name: {newUser.first_name}</th>
                 <th>Last Name: {newUser.last_name}</th>
                 <th>Username: {newUser.username}</th>
@@ -30,9 +30,9 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
             </tbody>
           </thead>
         </Table>
-      ) : (
+     
         <div>New user created with ID {userId}</div>
-      )}
+     
     </div>
   );
 };
