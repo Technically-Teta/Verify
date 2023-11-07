@@ -29,6 +29,10 @@ function App() {
         />
       </Helmet>
 
+      <h1 className="text-3xl font-bold underline">
+      Verify-ID
+    </h1>
+
 
       <div className="container flex-grow-1">
 

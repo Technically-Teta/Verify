@@ -7,8 +7,12 @@ const UserForm  = ({setNewUser,newUser})=> {
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
 
-const initialUser = newUser ? newUser :{id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
+//const initialUser = newUser ? newUser :{id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
+const initialUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
 
+
+console.log(initialUser)
+console.log(newUser)
  // This is the intital state  of the form
 const [userForm, setUserForm] = useState(initialUser);
 const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
