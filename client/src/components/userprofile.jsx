@@ -1,7 +1,21 @@
 import React, { useEffect } from 'react';
-import ListGroup from 'react-bootstrap/ListGroup';
+
+
 
 const UserProfile = ({userId, newUser, setNewUser }) => {
+
+  // starting state for drop down, opens at false(closed)
+  const [open, setOpen] = React.useState(false);
+  
+ //function to handle open state change
+const handleOpen = () => {
+  setOpen(!open);
+};
+
+  
+  
+  
+  
   useEffect(() => {
     if (!newUser) {
       fetch(`/api/users/${newUser.id}`)
@@ -96,34 +110,35 @@ const UserProfile = ({userId, newUser, setNewUser }) => {
       </div>
       </div>
 
-    
-
-      
- 
-    <ListGroup>
-      <ListGroup.Item>hello1</ListGroup.Item>
-      <ListGroup.Item>hello2</ListGroup.Item>
-      <ListGroup.Item>Morbi leo risus</ListGroup.Item>
-      <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
-      <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-    </ListGroup>
-  
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       <div>New user created with ID {newUser.id}</div>
+      
+      <div className='butncontainer'>
+        <button className='dropdown' onClick={handleOpen}> New User Next Steps</button>
+        {open ? <div>Is Open</div>: <div> Is Closed</div>}
+      </div>
+
+<form>
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </section>
   );
 };
