@@ -114,12 +114,26 @@ const handleOpen = () => {
       
       <div className='butncontainer'>
         <button className='dropdown' onClick={handleOpen}>Next Steps</button>
-        {open ? <div>Is Open</div>: <div> Is Closed</div>}
+        {open ? (
+          <ul className='menu'>
+              <li className='menu-item-org'>
+                <button>Organzation Intake</button>
+              </li>
+              <li className='menu-item-volunteering'>
+                <button>Volunteer Intake</button>
+              </li>
+          </ul>
+        
+        ) : null}
+        {open ? <div>is Open</div> :<div>is Closed</div>}
+      
+      
+      
+      
+      
       </div>
 
-<form>
-
-</form>
+ 
 
 
 
