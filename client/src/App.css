@@ -1,7 +1,9 @@
-/* Create an overlay effect for all backgrounds */
-/* Apply the overlay styles to the root element (e.g., <html> or <body>) */
-html::before, body::before {
-  content: "";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+svg {
   position: absolute;
   top: 0;
   left: 0;
@@ -9,25 +11,11 @@ html::before, body::before {
   height: 100%;
   box-sizing: border-box;
   display: block;
-  border: 9px black ridge;
-  background-color: #0a7d6f;
+  background-color: #0e4166;
   background-image: linear-gradient(to bottom, rgba(14, 65, 102, 0.86), #0e4166);
   z-index: -1; /* Place the overlay behind content */
 
-
-
-
-
-
 }
-
-* {
-  padding: 0;
-  margin: 0;
-}
-
-
-
 
 
 
@@ -42,6 +30,9 @@ html::before, body::before {
   color: aliceblue;
 }
 
+#bigpara{
+  margin-left: -500;
+}
 
 
 .App-logo {
@@ -101,15 +92,6 @@ html::before, body::before {
 
 
 
-h3{
-  display: grid;
-  font-family: Arial, Helvetica, sans-serif;
-  justify-content: center;
-  margin-left: -500;
-}
-
-
-
 
 .formprofile {
   max-width: 600px;
@@ -129,6 +111,15 @@ h1 {
   text-align: center;
   padding-bottom: 10px;
   border-bottom: 1px solid rgb(2, 5, 13);
+}
+
+
+h3 {
+  font-weight: 200;
+  color: white;
+  text-align: center;
+  padding-bottom: 10px;
+ 
 }
 
 
@@ -229,14 +220,27 @@ button {
 
 
 
+/* Center the contents both horizontally and vertically */
+.green-border-box {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 1100px;
+  justify-content: center; /* Center horizontally */
+  
+  width: 200px; /* Set the width of the box */
+  height: auto; /* Set the height of the box */
+  border: 2px solid green; /* Add a green border to the box */
+  padding: 20px; /* Add padding inside the box to create space for text */
+  text-align: center; /* Center-align the text within the box */
+  font-size: 16px; /* Set the font size for the text */
+  background-color: white; /* Set the background color of the box */
+}
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-
-
+/* Optionally, you can style the text further */
+.green-border-box p {
+  color: black; /* Set the text color to black */
+  font-weight: bold; /* Make the text bold */
+}
 
 
 

@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 
-const UserProfile = ({ newUser, setNewUser }) => {
+const UserProfile = ({userId, newUser, setNewUser }) => {
   useEffect(() => {
     if (!newUser) {
       fetch(`/api/users/${newUser.id}`)
         .then(response => response.json())
         .then(data => setNewUser(data));
     }
-  }, [newUser, setNewUser]);
+  }, [userId,newUser, setNewUser]);
 
   return (
     <section className='relative py-14 bg-gray-900'>
@@ -15,52 +15,93 @@ const UserProfile = ({ newUser, setNewUser }) => {
       <div className="relative max-w-screen-xl mx-auto text-gray-300 sm:px-4 md:px-8">
         <div className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
           <h3 className="text-cyan-400 font-semibold">
-            Pricing
+            Hello New User
           </h3>
-          <p className='text-white text-3xl font-semibold sm:text-4xl'>
-            Pay as you grow
-          </p>
-          <div className='max-w-xl'>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam efficitur consequat nunc.
-            </p>
-          </div>
-        </div>
-        <div className='mt-16 justify-center sm:flex'>
-          <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
-            <span className='text-gray-200 font-medium'>
-              First Name: {newUser.first_name}
-            </span>
-          </div>
-          <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
-            <span className='text-gray-200 font-medium'>
-              Last Name: {newUser.last_name}
-            </span>
-          </div>
-          <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
-            <span className='text-gray-200 font-medium'>
-              Username: {newUser.username}
-            </span>
-          </div>
-          <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
-            <span className='text-gray-200 font-medium'>
-              Email: {newUser.email}
-            </span>
-          </div>
-          <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
-            <span className='text-gray-200 font-medium'>
-              Password: {newUser.password}
-            </span>
-          </div>
-          <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-cyan-500 hover:bg-cyan-600 active-bg-cyan-700'>
-            Get Started
-          </button>
         </div>
       </div>
+       <br />
+       <br />
+       
+       <div className='green-border-box'>     
+      <div id='bigpara' className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+        <div className='mt-16 justify-center sm:flex'>
+          <div className="relative max-w-screen-xl mx-auto text-gray-300 sm:px-4 md:px-8">
+            <div className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+              <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
+                <span className='text-gray-200 font-medium'>
+                  <h3 className="text-green-400 font-semibold">First Name: {newUser.first_name}</h3>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div id='bigpara' className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+        <div className='mt-16 justify-center sm:flex'>
+          <div className="relative max-w-screen-xl mx-auto text-gray-300 sm:px-4 md:px-8">
+            <div className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+              <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
+                <span className='text-gray-200 font-medium'>
+                  <h3 className="text-green-400 font-semibold">Last Name: {newUser.last_name}</h3>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id='bigpara' className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+        <div className='mt-16 justify-center sm:flex'>
+          <div className="relative max-w-screen-xl mx-auto text-gray-300 sm:px-4 md:px-8">
+            <div className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+              <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
+                <span className='text-gray-200 font-medium'>
+                  <h3 className="text-green-400 font-semibold">Username: {newUser.username}</h3>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id='bigpara' className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+        <div className='mt-16 justify-center sm:flex'>
+          <div className="relative max-w-screen-xl mx-auto text-gray-300 sm:px-4 md:px-8">
+            <div className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+              <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
+                <span className='text-gray-200 font-medium'>
+                  <h3 className="text-green-400 font-semibold">Email: {newUser.email}</h3>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id='bigpara' className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+        <div className='mt-16 justify-center sm:flex'>
+          <div className="relative max-w-screen-xl mx-auto text-gray-300 sm:px-4 md:px-8">
+            <div className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
+              <div className="text-cyan-400 font-semibold bg-gray-900 border-cyan-400 border-x-0 border-transparent p-4 py-8 space-y-4 border-b border-gray-700 md:p-8">
+                <span className='text-gray-200 font-medium'>
+                  <h3 className="text-green-400 font-semibold">Password: {newUser.password}</h3>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+
+      <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-cyan-500 hover:bg-cyan-600 active-bg-cyan-700'>
+        Get Started
+      </button>
       <div>New user created with ID {newUser.id}</div>
     </section>
   );
 };
 
 export default UserProfile;
-
