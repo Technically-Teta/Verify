@@ -6,6 +6,9 @@ const UserProfile = ({userId, newUser, setNewUser }) => {
 
   // starting state for drop down, opens at false(closed)
   const [open, setOpen] = React.useState(false);
+
+   // starting state for forms to show, opens at false(closed)
+  const [showForm, setShowForm] = useState(false);
   
  //function to handle open state change
 const handleOpen = () => {
@@ -13,7 +16,7 @@ const handleOpen = () => {
 };
 
 const handleMenuOrgs = () => {
-// things
+  setShowForm(true); // I want the form to be shown when clicked
   setOpen(false);
   
 const handleMenuVol = () => {
