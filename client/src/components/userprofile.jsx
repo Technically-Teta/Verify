@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ListGroup from 'react-bootstrap/ListGroup';
 
 const UserProfile = ({userId, newUser, setNewUser }) => {
   useEffect(() => {
@@ -21,7 +22,7 @@ const UserProfile = ({userId, newUser, setNewUser }) => {
       </div>
        <br />
        <br />
-       
+
        <div className='green-border-box'>     
       <div id='bigpara' className='max-w-xl mx-auto space-y-3 px-4 sm:text-center sm:px-0'>
         <div className='mt-16 justify-center sm:flex'>
@@ -95,10 +96,33 @@ const UserProfile = ({userId, newUser, setNewUser }) => {
       </div>
       </div>
 
+    
 
-      <button className='px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-cyan-500 hover:bg-cyan-600 active-bg-cyan-700'>
-        Get Started
-      </button>
+      
+ 
+    <ListGroup>
+      <ListGroup.Item>hello1</ListGroup.Item>
+      <ListGroup.Item>hello2</ListGroup.Item>
+      <ListGroup.Item>Morbi leo risus</ListGroup.Item>
+      <ListGroup.Item>Porta ac consectetur ac</ListGroup.Item>
+      <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+    </ListGroup>
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div>New user created with ID {newUser.id}</div>
     </section>
   );

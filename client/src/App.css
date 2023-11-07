@@ -220,27 +220,6 @@ button {
 
 
 
-/* Center the contents both horizontally and vertically */
-.green-border-box {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 1100px;
-  justify-content: center; /* Center horizontally */
-  
-  width: 200px; /* Set the width of the box */
-  height: auto; /* Set the height of the box */
-  border: 2px solid green; /* Add a green border to the box */
-  padding: 20px; /* Add padding inside the box to create space for text */
-  text-align: center; /* Center-align the text within the box */
-  font-size: 16px; /* Set the font size for the text */
-  background-color: white; /* Set the background color of the box */
-}
-
-/* Optionally, you can style the text further */
-.green-border-box p {
-  color: black; /* Set the text color to black */
-  font-weight: bold; /* Make the text bold */
-}
 
 
 

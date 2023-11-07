@@ -8,7 +8,7 @@ import FruitProfile from "./components/fruitprofile";
 import UserProfile from "./components/userprofile";
 import { useState } from "react";
 import SVGAnimation from "./components/svganimation";
-import Userprofile2 from "./components/userprofile2";
+import('preline')
 
 
 function App() {
@@ -48,7 +48,7 @@ function App() {
       <Route path="/fruitprofile" element={<FruitProfile/>} />
       <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users" component={Users} />
-      <Route path="profiletoo" element={<Userprofile2/>} />
+   
    
       </Routes>
       <SVGAnimation />
