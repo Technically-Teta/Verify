@@ -32,14 +32,14 @@ function App() {
 
       <h1 className="text-3xl font-bold ">
       Verify-ID
-       </h1>
+      </h1>
 
+     
 
 
 
 
       <div className="container flex-grow-1">
-
 
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
