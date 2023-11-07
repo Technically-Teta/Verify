@@ -12,8 +12,16 @@ const handleOpen = () => {
   setOpen(!open);
 };
 
+const handleMenuOrgs = () => {
+// things
+  setOpen(false);
   
-  
+const handleMenuVol = () => {
+// things
+setOpen(false);
+}
+
+
   
   
   useEffect(() => {
@@ -112,15 +120,15 @@ const handleOpen = () => {
 
       <div>New user created with ID {newUser.id}</div>
       
-      <div className='butncontainer'>
-        <button className='dropdown' onClick={handleOpen}>Next Steps</button>
+      <div className='dropdown'>
+        <button className='dropdownbtn' onClick={handleOpen}>Next Steps</button>
         {open ? (
           <ul className='menu'>
-              <li className='menu-item-org'>
-                <button>Organzation Intake</button>
+              <li className='menu-item'>
+                <button onClick={handleMenuOrgs}>Organzation Intake</button>
               </li>
-              <li className='menu-item-volunteering'>
-                <button>Volunteer Intake</button>
+              <li className='menu-item'>
+                <button onClick={handleMenuVol}>Volunteer Intake</button>
               </li>
           </ul>
         

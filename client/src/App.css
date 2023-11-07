@@ -220,10 +220,10 @@ button {
 
 
 
-.dropdown{
+.dropdownbtn{
   text-align: center;
   font-family: Nabla;
-  margin-left: 670px;
+  margin-left: 1180px;
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -243,7 +243,46 @@ button {
 
 }
 
+.dropdown{
+
+  position:relative;
+  
+}
+
+.menu {
+  display: flex;
+  position: sticky;
+  top: 100%;
+  left: 1180px;
+  margin: 5px 0;
+  padding: 0;
+  border: 1px solid grey;
+  width: 150px;
+  background-color: white;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
 
 
+.menu > li{
+  margin: 10px;
 
+  background-color: white ;
+}
 
+.menu > li:hover {
+  background-color: lightgray;
+}
+.menu > li > button {
+width: 100%;
+height: 100%;
+text-align: left;
+
+background: none; 
+color: inherit;
+border: none;
+padding: 5px ;
+margin: 0;
+font: inherit;
+cursor: pointer;
+}
