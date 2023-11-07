@@ -113,7 +113,7 @@ const handleOpen = () => {
       <div>New user created with ID {newUser.id}</div>
       
       <div className='butncontainer'>
-        <button className='dropdown' onClick={handleOpen}> New User Next Steps</button>
+        <button className='dropdown' onClick={handleOpen}>Next Steps</button>
         {open ? <div>Is Open</div>: <div> Is Closed</div>}
       </div>
 
