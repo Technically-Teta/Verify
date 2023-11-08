@@ -260,6 +260,7 @@ button {
 
 .menu {
   display: flex;
+  border-radius: 10px;
   position: sticky;
   top: 100%;
   left: 1165px;
