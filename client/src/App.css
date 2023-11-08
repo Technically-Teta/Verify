@@ -1,4 +1,3 @@
-
 * {
   padding: 0;
   margin: 0;
@@ -82,11 +81,11 @@ svg {
   font-size: x-large;
 }
 
-.icon{
-  display: grid;
+.personicon{
   place-items: center; /* This shorthand centers the content both vertically and horizontally */
   width: 100%; /* Set the width to whatever you need */
-  margin-top: auto;
+
+
 }
 
 
@@ -295,4 +294,9 @@ padding: 5px ;
 margin: 0;
 font: inherit;
 cursor: pointer;
+}
+
+
+.submitbtn{
+  color: green !important;
 }

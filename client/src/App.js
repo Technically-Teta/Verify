@@ -8,6 +8,7 @@ import FruitProfile from "./components/fruitprofile";
 import UserProfile from "./components/userprofile";
 import { useState } from "react";
 import SVGAnimation from "./components/svganimation";
+import OrgForm from "./components/orgform";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
       <Route path="/fruitprofile" element={<FruitProfile/>} />
       <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users" component={Users} />
+      <Route path="/org-form" component={OrgForm} />
      
    
    

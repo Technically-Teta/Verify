@@ -155,7 +155,7 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
             </li>
           </ul>
         ) : null}
-        {open ? <div>is Open</div> : <div>is Closed</div>}
+        {open ? <div>is Open</div> : <div>******</div>}
       </div>
     </section>
   );
