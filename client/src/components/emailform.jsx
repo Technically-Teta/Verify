@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import emailjs from '@emailjs/browser';
 
 function EmailForm() {
 
@@ -7,6 +7,35 @@ function EmailForm() {
 const [name, setName] =useState(' ');
 const [email, setEmail] = useState('');
 const [message, setMessage] = useState('');
+
+//important info, to be added to env later
+const serviceId = 'service_l25pbuo';
+const publicKey = 'ZBAefpbhwqQF0KbE6';
+const templateId = 'template_face5xg'
+
+
+//create an object with template parameters
+const template= {
+from_name: name,
+from_email: email,
+to_name: 'Verify-Id',
+message: message,
+};
+
+emailjs.send(template, publicKey, serviceId, templateId)
+.then((response) => {
+    console.log('Email was sent successfully',response);
+    setName('');
+    setEmail('');
+    setMessage('');
+    
+})
+  .catch((err) => {
+    console.error('Error sending email', error)
+
+  });
+}
+
 
 
   return (

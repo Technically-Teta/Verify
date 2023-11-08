@@ -9,6 +9,7 @@ import UserProfile from "./components/userprofile";
 import { useState } from "react";
 import SVGAnimation from "./components/svganimation";
 import OrgForm from "./components/orgform";
+import EmailForm from "./components/emailform";
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
       <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users" component={Users} />
       <Route path="/org-form" component={OrgForm} />
+      <Route path="/emailform" component={EmailForm} />
      
    
    
