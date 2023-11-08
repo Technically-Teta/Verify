@@ -61,7 +61,7 @@ const postUser = (newUser) => {
     .then((data) => {
       console.log('Hello, I am the post request', data);
       setNewUser(data);
-      setSubmitMessage('User information submitted successfully'); // Set the success message
+      setSubmitMessage('User information submitted successfully'); // Set the success message (change to different color)
       setUserForm(initialUser); // Clear the form
     })
     .catch((error) => {
@@ -85,6 +85,7 @@ const updateUser = (existingUser)=>{
 });
 }
 
+
 // submit the form for updates and for changes(post) 
 const handleSubmit = (e) => {
   e.preventDefault();
@@ -98,7 +99,7 @@ const handleSubmit = (e) => {
     postUser(userForm)
   }
   };   
-
+  
  
 
   return (

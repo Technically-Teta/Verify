@@ -219,11 +219,9 @@ button {
 }
 
 
-
-.dropdownbtn{
+.dropdownbtn {
   text-align: center;
   font-family: Nabla;
-  margin-left: 1180px;
   display: inline-block;
   outline: none;
   cursor: pointer;
@@ -237,11 +235,23 @@ button {
   line-height: 1.15;
   font-size: 18px;
   :hover {
-      transition: all .1s ease;
-      box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
+    transition: all 0.1s ease;
+    box-shadow: 0 0 0 0 #fff, 0 0 0 3px #1de9b6;
   }
 
+  /* Adjust margin-left for different screen sizes */
+  margin-left: 47%; /* Center the button initially */
+
+  /* Media queries for different screen sizes */
+  @media screen and (max-width: 768px) {
+    margin-left: 40%; /* Adjust for smaller screens */
+  }
+
+  @media screen and (max-width: 480px) {
+    margin-left: 30%; /* Further adjust for even smaller screens */
+  }
 }
+
 
 .dropdown{
 

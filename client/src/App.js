@@ -8,12 +8,11 @@ import FruitProfile from "./components/fruitprofile";
 import UserProfile from "./components/userprofile";
 import { useState } from "react";
 import SVGAnimation from "./components/svganimation";
-import('preline')
-import OrgForm from "./components/orgform";
+
 
 function App() {
   const [newUserId, setNewUserId] = useState(null);
-  const [newUser, setNewUser] = useState({id:"13", first_name:"Sam", last_name:"Browm", username:"test", email:"test@gmail.com" , password:"test"});
+  const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
 
   const { user } = useAuth0();
   
@@ -48,7 +47,7 @@ function App() {
       <Route path="/fruitprofile" element={<FruitProfile/>} />
       <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users" component={Users} />
-      <Route path="/org-intake" component={OrgForm} />
+     
    
    
       </Routes>
