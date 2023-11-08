@@ -150,12 +150,13 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
                 <button onClick={handleMenuOrgs}>Organization Intake</button>
               </Link>
             </li>
-            <li className="menu-item">
+            
+              <li className="menu-item">
               <button onClick={handleMenuVol}>Volunteer Intake</button>
             </li>
           </ul>
         ) : null}
-        {open ? <div>is Open</div> : <div>******</div>}
+        {open ? <div>#</div> : <div>******</div>}
       </div>
     </section>
   );
