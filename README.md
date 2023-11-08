@@ -16,13 +16,13 @@
 
 ## Table of Contents
 
--[About] (#about-verifyid)
--[Api's] (#API)
--[Tech Stack](#tech-stack)
--[Style Guide](#style-guide)
--[Wire Frame] (#wire-frame)
--[Installation](#installation)
--[Future Development](#future-development)
+- [About](#about-verifyid)
+- [Api's](#API)
+- [Tech Stack](#tech-stack)
+- [Style Guide](#style-guide)
+- [Wire Frame](#wire-frame)
+- [Installation](#installation)
+- [Future Development](#future-development)
 
 
 
