@@ -5,7 +5,7 @@ import {Routes,Route, useNavigate} from 'react-router-dom'
 import UserProfile from './userprofile';
  
 
-const UserForm  = ({setNewUser,newUser})=> {
+const UserForm  = ()=> {
 //creates the navigate function to apply to routers
  const navigate =useNavigate() 
 
@@ -17,16 +17,16 @@ const navigateToProfile = () =>{
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
 const initialUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
-
-
 console.log(initialUser)
-console.log(newUser)
+
  // This is the intital state  of the form
+
 const [userForm, setUserForm] = useState(initialUser);
 const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
-
 //passes the newUser prop to the userprofile
 const [newUserId, setNewUserId] = useState(null);
+const [newUser, setNewUser] = useState(null); // Initialize with null or an appropriate default value
+
 
 //create functions that handle the event of the user typing into the form
 const handleFirstNameChange = (event) => {
@@ -81,7 +81,7 @@ const postUser = (newUser) => {
 
   //A function to handle the Update request(PUT)
 const updateUser = (existingUser)=>{
-  return fetch(`http://localhost:8080/api/users/${existingUser.id}`,{
+  return fetch(`api/users/${existingUser.id}`,{
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(existingUser)
@@ -124,9 +124,9 @@ const handleSubmit = (e) => {
     
      
       </div>
-    <form className='formprofile' onSubmit={handleSubmit}>
+    
+      <form className='formprofile' onSubmit={handleSubmit}>
       <label>First Name</label>
-
       <input
       type='text'
       id='add-user'
