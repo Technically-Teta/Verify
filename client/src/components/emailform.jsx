@@ -8,6 +8,12 @@ const [name, setName] =useState(' ');
 const [email, setEmail] = useState('');
 const [message, setMessage] = useState('');
 
+
+const handleSubmit = (e) => {
+e.preventDefault();
+}
+
+
 //important info, to be added to env later
 const serviceId = 'service_l25pbuo';
 const publicKey = 'ZBAefpbhwqQF0KbE6';
@@ -30,11 +36,10 @@ emailjs.send(template, publicKey, serviceId, templateId)
     setMessage('');
     
 })
-  .catch((err) => {
+  .catch((error) => {
     console.error('Error sending email', error)
 
   });
-}
 
 
 
