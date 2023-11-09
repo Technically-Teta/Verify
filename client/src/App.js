@@ -4,7 +4,6 @@ import Users from "./components/users";
 import { useAuth0 } from '@auth0/auth0-react';
 import { Route, Routes, Link } from 'react-router-dom';
 import UserForm from "./components/userform";
-import FruitProfile from "./components/fruitprofile";
 import UserProfile from "./components/userprofile";
 import SVGAnimation from "./components/svganimation";
 import OrgForm from "./components/orgform";
@@ -57,8 +56,8 @@ function App() {
       <Route path="/userform" element={<UserForm />} />
       <Route path="/userprofile" element={<UserProfile />} />
       <Route path="users"        element={<Users        />} />
-      <Route path="/org-form" component={<OrgForm />} />
-      <Route path="/emailform" component={<EmailForm/>} />
+      <Route path="/org-form" element={<OrgForm />} />
+      <Route path="/emailform" element={<EmailForm/>} />
      
    
    
