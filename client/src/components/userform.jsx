@@ -1,20 +1,32 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import {Routes,Route, useNavigate} from 'react-router-dom'
+import UserProfile from './userprofile';
  
 
-const UserForm  = ({setNewUser,newUser})=> {
+const UserForm  = ()=> {
+//creates the navigate function to apply to routers
+ const navigate =useNavigate() 
+
+//function to navigate to the user profile
+const navigateToProfile = () =>{
+  navigate('/userprofile');
+};
+
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
-
-const initialUser = newUser ? newUser :{id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
+const initialUser = {id:"", first_name:"", last_name:"", username:"", email:"" , password:""};
+console.log(initialUser)
 
  // This is the intital state  of the form
+
 const [userForm, setUserForm] = useState(initialUser);
 const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
-
 //passes the newUser prop to the userprofile
 const [newUserId, setNewUserId] = useState(null);
+const [newUser, setNewUser] = useState(null); // Initialize with null or an appropriate default value
+
 
 //create functions that handle the event of the user typing into the form
 const handleFirstNameChange = (event) => {
@@ -57,7 +69,7 @@ const postUser = (newUser) => {
     .then((data) => {
       console.log('Hello, I am the post request', data);
       setNewUser(data);
-      setSubmitMessage('User information submitted successfully'); // Set the success message
+      setSubmitMessage('User information submitted successfully') ; // Set the success message (change to different color)
       setUserForm(initialUser); // Clear the form
     })
     .catch((error) => {
@@ -69,7 +81,7 @@ const postUser = (newUser) => {
 
   //A function to handle the Update request(PUT)
 const updateUser = (existingUser)=>{
-  return fetch(`/api/users/${existingUser.id}`,{
+  return fetch(`api/users/${existingUser.id}`,{
     method: 'PUT',
     headers: {'Content-Type': 'application/json'},
     body: JSON.stringify(existingUser)
@@ -80,6 +92,7 @@ const updateUser = (existingUser)=>{
  setNewUser(data);
 });
 }
+
 
 // submit the form for updates and for changes(post) 
 const handleSubmit = (e) => {
@@ -104,16 +117,16 @@ const handleSubmit = (e) => {
         <h2>Sign up for an Account here!</h2> 
 
          <br />
-       <div className='icon'>      
+       <div className='personicon'>      
        <FontAwesomeIcon icon={faUser} size="2xl" style={{color: "#36d3d0",}} />  
        </div>
         
     
      
       </div>
-    <form className='formprofile' onSubmit={handleSubmit}>
+    
+      <form className='formprofile' onSubmit={handleSubmit}>
       <label>First Name</label>
-
       <input
       type='text'
       id='add-user'
@@ -162,8 +175,13 @@ const handleSubmit = (e) => {
       
       />
       
-      <input type='submit' />{submitMessage && <p>{submitMessage}</p>} 
+      <input onClick={navigateToProfile} type='submit'/> <span className='submitbtn' style={{ color: 'green' }}>{submitMessage && <p>{submitMessage}</p>} </span>
       
+      <Routes>
+      <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
+      </Routes>
+
+
     </form>
     
 
