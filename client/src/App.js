@@ -11,15 +11,19 @@ import OrgForm from "./components/orgform";
 import EmailForm from "./components/emailform";
 
 
+
 function App() {
-<<<<<<< Updated upstream
-  const [newUserId, setNewUserId] = useState(null);
-  const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
-=======
+  
 
   // const [newUserId, setNewUserId] = useState(null);
   // const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
->>>>>>> Stashed changes
+  // <Route path="/" element={<Users user={user}/>} />
+  // <Route path="api/form" element={<UserForm user={user} setNewUser={setNewUser} newUser={newUser} />} />
+  // <Route path="/fruitprofile" element={<FruitProfile/>} />
+  // <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
+  // <Route path="users" component={Users} />
+  // <Route path="/org-form" component={OrgForm} />
+  // <Route path="/emailform" component={EmailForm} />
 
   const { user } = useAuth0();
   
@@ -50,12 +54,11 @@ function App() {
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
-      <Route path="api/form" element={<UserForm user={user} setNewUser={setNewUser} newUser={newUser} />} />
-      <Route path="/fruitprofile" element={<FruitProfile/>} />
-      <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
-      <Route path="users" component={Users} />
-      <Route path="/org-form" component={OrgForm} />
-      <Route path="/emailform" component={EmailForm} />
+      <Route path="/userform" element={<UserForm />} />
+      <Route path="/userprofile" element={<UserProfile />} />
+      <Route path="users"        element={<Users        />} />
+      <Route path="/org-form" component={<OrgForm />} />
+      <Route path="/emailform" component={<EmailForm/>} />
      
    
    

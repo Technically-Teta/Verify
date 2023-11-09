@@ -1,7 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const UserProfile = ({ userId, newUser, setNewUser }) => {
+const UserProfile = ({ user_id, newUser, setNewUser }) => {
   // starting state for drop down, opens at false (closed)
   const [open, setOpen] = useState(false);
 
@@ -19,13 +19,15 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    if (!newUser) {
-      fetch(`/api/users/${newUser.id}`) // pass in the auth0 user and use that to keep track of userstate
-        .then((response) => response.json())
-        .then((data) => setNewUser(data));
-    }
-  }, [userId, newUser, setNewUser]);
+  //API request is made when userId is available and newUser is null
+    useEffect(() => {
+      if (user_id && newUser ===null) {
+        fetch(`/api/users/${user_id}`)
+          .then((response) => response.json())
+          .then((data) => setNewUser(data));
+      }
+    }, [user_id, newUser, setNewUser]);
+  
 
   return (
     <section className="relative py-14 bg-gray-900">
