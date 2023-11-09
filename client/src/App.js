@@ -13,6 +13,7 @@ import EmailForm from "./components/emailform";
 
 function App() {
   
+  
 
   // const [newUserId, setNewUserId] = useState(null);
   // const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
@@ -54,7 +55,7 @@ function App() {
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
       <Route path="/userform" element={<UserForm />} />
-      <Route path="/userprofile" element={<UserProfile />} />
+      <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
       <Route path="users"        element={<Users        />} />
       <Route path="/org-form" element={<OrgForm />} />
       <Route path="/emailform" element={<EmailForm/>} />

@@ -53,26 +53,27 @@ function EmailForm() {
 
   return (
     <form onSubmit={handleSubmit} className='emailform'>
-      <input
-        type='text'
+      <input className='emailform'
+        type='email'
         placeholder='Add Name'
         value={name}
         onChange={(e) => setName(e.target.value)}
       />
-      <input
+      <input className='emailform'
         type='email'
         placeholder='Add Email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-      <textarea className='textarea'
+      <textarea className='emailform'
         placeholder='Send custom message to community service organization'
+        type= 'email'
         cols='30'
         rows='10'
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       ></textarea>
-      <button type='submit'>Send Email</button>
+      <button className='emailform'   type='submit'>Send Email</button>
     </form>
   );
 }

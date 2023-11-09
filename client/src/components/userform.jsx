@@ -21,11 +21,11 @@ console.log(initialUser)
 
  // This is the intital state  of the form
 
-const [userForm, setUserForm] = useState(initialUser);
-const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
-//passes the newUser prop to the userprofile
-const [newUserId, setNewUserId] = useState(null);
-const [newUser, setNewUser] = useState(null); // Initialize with null or an appropriate default value
+      const [userForm, setUserForm] = useState(initialUser);
+      const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
+      //passes the newUser prop to the userprofile
+      const [newUserId, setNewUserId] = useState(null);
+      const [newUser, setNewUser] = useState(null); // Initialize with null or an appropriate default value
 
 
 //create functions that handle the event of the user typing into the form

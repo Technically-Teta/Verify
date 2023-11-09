@@ -299,14 +299,14 @@ cursor: pointer;
 }
 
 
-.emaiform{
+.emailform{
+ 
+  margin-top: 40px;
   display: flex ;
+  width: 40%;
+  margin-left: 500px;
   flex-direction: column;
   align-items: center ;
   justify-content: center;
 }
 
-.textarea{
-  display: flex ;
-  justify-content: center ;
-}
