@@ -58,6 +58,7 @@ emailjs.send(template, publicKey, serviceId, templateId)
       onChange={(e) => setEmail(e.target.value)}
       />
       <textarea 
+      placeholder='Send custome message to community service organization'
       cols="30"
       rows="10"
       value={message}

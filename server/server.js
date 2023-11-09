@@ -41,20 +41,7 @@ app.get('/api/users', async (req,res) => {
 });
 
 
-// FRUIT API  api/fruit/all
-
-app.get('/api/fruit', async (req, res) => {
-  const URL = "https://www.fruityvice.com/api/fruit/all";
-  try {
-    const apiRequest = await fetch(URL);
-    const fruitInfo = await apiRequest.json();
-    const names = fruitInfo.map(item => item.name); // Extract names from the array of objects
-    console.log(names);
-    res.send(names);
-  } catch (err) {
-    console.log(err);
-  }
-});
+// Email JS API is on the frontend
 
 
 
