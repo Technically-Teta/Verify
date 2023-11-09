@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 const UserProfile = ({ userId, newUser, setNewUser }) => {
   // starting state for drop down, opens at false (closed)
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   // Function to handle open state change
   const handleOpen = () => {
@@ -15,7 +15,7 @@ const UserProfile = ({ userId, newUser, setNewUser }) => {
   };
 
   const handleMenuVol = () => {
-    // things
+
     setOpen(false);
   };
 

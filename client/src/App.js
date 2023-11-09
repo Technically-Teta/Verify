@@ -6,15 +6,20 @@ import { Route, Routes, Link } from 'react-router-dom';
 import UserForm from "./components/userform";
 import FruitProfile from "./components/fruitprofile";
 import UserProfile from "./components/userprofile";
-import { useState } from "react";
 import SVGAnimation from "./components/svganimation";
 import OrgForm from "./components/orgform";
 import EmailForm from "./components/emailform";
 
 
 function App() {
+<<<<<<< Updated upstream
   const [newUserId, setNewUserId] = useState(null);
   const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
+=======
+
+  // const [newUserId, setNewUserId] = useState(null);
+  // const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
+>>>>>>> Stashed changes
 
   const { user } = useAuth0();
   
