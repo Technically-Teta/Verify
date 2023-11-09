@@ -9,11 +9,13 @@ import SVGAnimation from "./components/svganimation";
 import OrgForm from "./components/orgform";
 import EmailForm from "./components/emailform";
 
-
+import React, { useState } from 'react'
 
 function App() {
   
-  
+  const initialUser = {id:"a", first_name:"my first name", last_name:"c", username:"d", email:"e" , password:"f"};
+  const [profileUser, setProfileUser] = useState(null); // Initialize with null or an appropriate default value
+
 
   // const [newUserId, setNewUserId] = useState(null);
   // const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
@@ -54,14 +56,13 @@ function App() {
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
       <Route path="/" element={<Users user={user}/>} />
-      <Route path="/userform" element={<UserForm />} />
-      <Route path="/userprofile" element={<UserProfile userId={newUserId} newUser={newUser} setNewUser={setNewUser} setNewUserId={setNewUserId}  />} />
+      <Route path="/userform" element={<UserForm setProfileUser={setProfileUser} />} />
+      <Route path="/userprofile" element={<UserProfile newUser={profileUser}  />} />
       <Route path="users"        element={<Users        />} />
       <Route path="/org-form" element={<OrgForm />} />
       <Route path="/emailform" element={<EmailForm/>} />
      
-   
-   
+  
       </Routes>
       <SVGAnimation />
       </div>
