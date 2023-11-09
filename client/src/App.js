@@ -14,7 +14,7 @@ import React, { useState } from 'react'
 function App() {
   
   const initialUser = {id:"a", first_name:"my first name", last_name:"c", username:"d", email:"e" , password:"f"};
-  const [profileUser, setProfileUser] = useState(null); // Initialize with null or an appropriate default value
+  const [profileUser, setProfileUser] = useState(initialUser); // Initialize with null or an appropriate default value
 
 
   // const [newUserId, setNewUserId] = useState(null);
