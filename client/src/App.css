@@ -310,3 +310,20 @@ cursor: pointer;
   justify-content: center;
 }
 
+@media screen and (max-width: 400px) {
+  #features {
+    padding: 20px;
+    width: 111%;
+  }
+  #volunteer-organizations,
+  #about,
+  #profile,
+  #contact
+   {
+    width: 111%;
+  }
+
+  #portfolio {
+    width: 110%;
+  }
+}

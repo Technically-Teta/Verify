@@ -36,7 +36,7 @@ const template = {
 
 // API functions
   emailjs 
-    .send(userID, serviceID, templateID, template)
+    .send(serviceID, templateID)
     .then(
         function(response) {
             console.log("sent successfully", response.status,response.text);
