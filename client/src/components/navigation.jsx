@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Navigation = (props) => {
+const Navigation = () => {
   return (
     <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
       <div className='container'>
@@ -29,7 +29,18 @@ const Navigation = (props) => {
           <ul className='nav navbar-nav navbar-right'>
             <li>
               <a href='#features' className='page-scroll'>
-                Features
+               Volunteer Organizations
+              </a>
+            </li>
+        
+            <li>
+              <a href='#about' className='page-scroll'>
+                About
+              </a>
+            </li>
+            <li>
+              <a href='#features' className='page-scroll'>
+                Profile
               </a>
             </li>
             {/* ... other list items ... */}
@@ -38,6 +49,11 @@ const Navigation = (props) => {
                 Contact
               </a>
             </li>
+            
+
+
+
+
           </ul>
         </div>
       </div>

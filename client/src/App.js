@@ -9,6 +9,7 @@ import SVGAnimation from "./components/svganimation";
 import OrgForm from "./components/orgform";
 import EmailForm from "./components/emailform";
 import React, { useState } from 'react'
+import Navigation from "./components/navigation";
 
 
 
@@ -32,6 +33,8 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
+
+      <Navigation/>
      <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
