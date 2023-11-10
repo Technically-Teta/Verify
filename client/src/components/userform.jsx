@@ -5,14 +5,15 @@ import {Routes,Route, useNavigate} from 'react-router-dom'
 import UserProfile from './userprofile';
  
 
-const UserForm  = ()=> {
-//creates the navigate function to apply to routers
- const navigate =useNavigate() 
-
-//function to navigate to the user profile
-const navigateToProfile = () =>{
-  navigate('/userprofile');
-};
+const UserForm  = ({setProfileUser})=> {
+  //creates the navigate function to apply to routers
+   const navigate =useNavigate() 
+  
+  //function to navigate to the user profile
+  const navigateToProfile = () =>{
+    setProfileUser(userForm);
+    navigate('/userprofile');
+  };
 
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
