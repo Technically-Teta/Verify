@@ -9,29 +9,34 @@ function EmailForm() {
   const [message, setMessage] = useState('');
 
 
-const userKey= process.env.REACT_APP_PUBLICKEY
-const templateKey= process.env.REACT_APP_TEMPLATE
+const userID= process.env.REACT_APP_USER_ID
+const templateID= process.env.REACT_APP_TEMPLATE
+const serviceID= process.env.REACT_APP_SERVICE
+
+emailjs.init(userID); 
 
  // function to send email on submission
  const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs.init(data.publicKey); 
+  
     // Create an object with template parameters
-     const template = {
-        from_name: name,
-        from_email:'Verify-Id',
-        to_name: email,
-        message: {
-          data: message,
-         }, 
-      };
-      console.log(template);
-    };
-   console.log(name, email,message,template);
-    
+   console.log(name, email,message);
+};
+
+const template = {
+    from_name: name,
+    from_email:'Verify-Id',
+    to_name: email,
+    message: {
+      data: message,
+     }, 
+  };
+  console.log(template);
+
+
 // API functions
   emailjs 
-    .send(userKey, templateKey, template)
+    .send(userID, serviceID, templateID, template)
     .then(
         function(response) {
             console.log("sent successfully", response.status,response.text);
