@@ -327,3 +327,24 @@ cursor: pointer;
     width: 110%;
   }
 }
+
+
+.navbar{
+
+	width: 100%;
+	float: left;
+	margin: 0 0 3em 0;
+	padding: 0;
+	list-style: none; 
+}
+
+
+.page-scroll{
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(0, 153, 84);
+  border-right: 1px solid #ccc;
+
+}

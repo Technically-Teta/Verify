@@ -2,9 +2,10 @@ import React from 'react';
 
 const Navigation = () => {
   return (
-    <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
+    <nav id='menu' className='navbar'>
       <div className='container'>
         <div className='navbar-header'>
+        
           <button
             type='button'
             className='navbar-toggle collapsed'
@@ -12,14 +13,12 @@ const Navigation = () => {
             data-target='#bs-example-navbar-collapse-1'
           >
             {' '}
-            <span className='sr-only'>Toggle navigation</span>{' '}
+            <span className='sr-only'>Verify Your Time!</span>{' '}
             <span className='icon-bar'></span>{' '}
             <span className='icon-bar'></span>{' '}
             <span className='icon-bar'></span>{' '}
           </button>
-          <a className='navbar-brand page-scroll' href='#page-top'>
-            Verify-ID
-          </a>{' '}
+          
         </div>
 
         <div

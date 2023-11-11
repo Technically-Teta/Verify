@@ -33,8 +33,7 @@ function App() {
 
   return (
     <div id="app" className="d-flex flex-column h-100">
-
-      <Navigation/>
+ 
      <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -44,13 +43,16 @@ function App() {
         />
       </Helmet>
 
+
+
       <h1 className="text-3xl font-bold ">
       Verify-ID
       </h1>
-
+        
+      <img src="https://www.canva.com/design/DAFzzGhc-AU/D-w9aoTSBxGQ-1pkfJOpTw/view?utm_content=DAFzzGhc-AU&utm_campaign=designshare&utm_medium=link&utm_source=editor
+       " alt="verifyidlog" />
      
-
-
+        <Navigation/>
 
 
       <div className="container flex-grow-1">
