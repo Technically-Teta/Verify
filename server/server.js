@@ -41,9 +41,31 @@ app.get('/api/users', async (req,res) => {
 });
 
 
-// Email JS API is on the frontend
+// API to sent up Authentication
+app.post('/api/me', cors(), async (req, res) => {
+  const newUser = {
+    last_name: req.body.last_name,
+    first_name: req.body.first_name,
+    email: req.body.email,
+    password: req.body.password,
 
+  }
+  //console.log(newUser);
 
+  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+  const valuesEmail = [newUser.email]
+  const resultsEmail = await db.query(queryEmail, valuesEmail);
+  if(resultsEmail.rows[0]){
+    console.log(`Thank you ${resultsEmail.rows[0].firstname} for coming back`)
+  } else{
+  const query = 'INSERT INTO users(last_name, first_name, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
+  const values = [newUser.last_name, newUser.first_name, newUser.email, newUser.password]
+  const result = await db.query(query, values);
+  console.log(result.rows[0]);
+
+  }
+
+});
 
 
 app.get('/api/orgs', cors(), async (req, res) => {
