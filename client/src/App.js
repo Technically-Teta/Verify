@@ -10,12 +10,22 @@ import OrgForm from "./components/orgform";
 import EmailForm from "./components/emailform";
 import React, { useState } from 'react'
 import Navigation from "./components/navigation";
-
-
+import Loading from "./components/loading";
+import Logo from "./components/logo";
 
 function App() {
   const initialUser = {id:"a", first_name:"my first name", last_name:"c", username:"d", email:"e" , password:"f"};
   const [profileUser, setProfileUser] = useState(initialUser); // Initialize with null or an appropriate default value
+
+  const { isLoading } = useAuth0();
+  const { user } = useAuth0();
+  if (isLoading) {
+    return <Loading />;
+  }
+
+
+
+
 
   // const [newUserId, setNewUserId] = useState(null);
   // const [newUser, setNewUser] = useState({id:"", first_name:"", last_name:"", username:"", email:"" , password:""});
@@ -27,13 +37,14 @@ function App() {
   // <Route path="/org-form" component={OrgForm} />
   // <Route path="/emailform" component={EmailForm} />
 
-  const { user } = useAuth0();
+
   
   
 
   return (
     <div id="app" className="d-flex flex-column h-100">
         <Navigation/>
+        <Logo/>
      <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -59,7 +70,8 @@ function App() {
 
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>
-      <Route path="/" element={<Users user={user}/>} />
+     
+      <Route path="api/me" element={<UserProfile user={user}/>} />
       <Route path="/userform" element={<UserForm setProfileUser={setProfileUser} />} />
       <Route path="/userprofile" element={<UserProfile newUser={profileUser}  />} />
       <Route path="users"        element={<Users        />} />
