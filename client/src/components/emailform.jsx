@@ -13,11 +13,11 @@ const userID= process.env.REACT_APP_USER_ID
 const templateID= process.env.REACT_APP_TEMPLATE
 const serviceID= process.env.REACT_APP_SERVICE
 
-emailjs.init(userID); 
+emailjs.init(serviceID, templateID, userID); 
 
  // function to send email on submission
  const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault();             
   
     // Create an object with template parameters
    console.log(name, email,message);
