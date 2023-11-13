@@ -15,10 +15,12 @@ export const Contact = (props) => {
   }
   const clearState = () => setState({ ...initialState })
 
- const serviceId ='service_l25pbuo';
- const publicKey ='ZBAefpbhwqQF0KbE6';
-const templateId= 'template_face5xg';
 
+  const userID= process.env.REACT_APP_USER_ID
+  const templateID= process.env.REACT_APP_TEMPLATE
+  const serviceID= process.env.REACT_APP_SERVICE
+  
+  emailjs.init(serviceID, templateID, userID); 
 
 
   const handleSubmit = (e) => {
@@ -26,7 +28,7 @@ const templateId= 'template_face5xg';
     console.log(name, email, message)
     emailjs
       .sendForm(
-        serviceId, publicKey, e.target, templateId
+        serviceID, userID, e.target, templateID
       )
       .then(
         (result) => {

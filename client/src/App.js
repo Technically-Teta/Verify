@@ -11,7 +11,7 @@ import EmailForm from "./components/emailform";
 import React, { useState } from 'react'
 import Navigation from "./components/navigation";
 import Loading from "./components/loading";
-import Logo from "./components/logo";
+import logo from "./components/logo";
 
 function App() {
   const initialUser = {id:"a", first_name:"my first name", last_name:"c", username:"d", email:"e" , password:"f"};
@@ -44,7 +44,7 @@ function App() {
   return (
     <div id="app" className="d-flex flex-column h-100">
         <Navigation/>
-        <Logo/>
+        <logo/>
      <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

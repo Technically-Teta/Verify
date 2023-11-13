@@ -1,5 +1,6 @@
 import React from 'react';
 import AuthNav from './auth-nav';
+import { Link } from 'react-router-dom';
 
 
 const Navigation = () => {
@@ -18,11 +19,11 @@ const Navigation = () => {
         >
           <ul className='nav navbar-nav navbar-right'>
             <li>
-              <a href='#features' className='page-scroll'>
+            <Link to="#volunteer organizations" className='page-scroll'>
                Volunteer Organizations
-              </a>
+             </Link>
             </li>
-        
+             
             <li>
               <a href='#about' className='page-scroll'>
                 About
