@@ -26,6 +26,30 @@ app.get('/', (req, res) => {
 });
 
 
+//API for QR Code
+app.get('/api/QR', async (req, res) => {
+  const URL = "https://www.fruityvice.com/api/fruit/all";
+  try {
+    const apiRequest = await fetch(URL);
+    const fruitInfo = await apiRequest.json();
+    const names = fruitInfo.map(item => item.name); // Extract names from the array of objects
+    console.log(names);
+    res.send(names);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+
+
+
+
+
+
+
+
+
+
 // create the GET requests
 app.get('/api/users', async (req,res) => {
 

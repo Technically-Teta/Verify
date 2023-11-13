@@ -6,16 +6,16 @@ import {Route, Routes, Link } from 'react-router-dom';
 import UserForm from "./components/userform";
 import UserProfile from "./components/userprofile";
 import SVGAnimation from "./components/svganimation";
-import OrgForm from "./components/orgform";
 import EmailForm from "./components/emailform";
 import React, { useState } from 'react'
 import Navigation from "./components/navigation";
 import Loading from "./components/loading";
 import ContactForm from "./components/contactform";
+import VolunteerOrgForm from "./components/volunteerorgform";
 
 
 function App() {
-  const initialUser = {id:"a", first_name:"my first name", last_name:"c", username:"d", email:"e" , password:"f"};
+  const initialUser = {id:"a", first_name:"*", last_name:"*", username:"*", email:"*" , password:"*"};
   const [profileUser, setProfileUser] = useState(initialUser); // Initialize with null or an appropriate default value
 
   const { isLoading } = useAuth0();
@@ -66,12 +66,10 @@ function App() {
       <Route path="/userform" element={<UserForm setProfileUser={setProfileUser} />} />
       <Route path="/userprofile" element={<UserProfile newUser={profileUser}  />} />
       <Route path="/users"        element={<Users        />} />
-      <Route path="/org-form" element={<OrgForm />} />
       <Route path="/emailform" element={<EmailForm/>} />
       <Route path="/contactform" element={<ContactForm/> }/>
+      <Route path="/volunteerorgform" element={<VolunteerOrgForm />}/>
      
-   
-   
       </Routes>
 
 
