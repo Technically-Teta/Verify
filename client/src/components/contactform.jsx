@@ -1,12 +1,15 @@
 import { useState } from 'react'
 import emailjs from 'emailjs-com'
+import { Link } from 'react-router-dom';
 
 const initialState = {
   name: '',
   email: '',
   message: '',
 }
-export const Contact = (props) => {
+
+
+const ContactForm = (props) => {
   const [{ name, email, message }, setState] = useState(initialState)
 
   const handleChange = (e) => {
@@ -42,6 +45,7 @@ export const Contact = (props) => {
   }
   return (
     <div>
+        <Link to='/contact'>contact</Link>
       <div id='contact'>
         <div className='container'>
           <div className='col-md-8'>
@@ -163,3 +167,5 @@ export const Contact = (props) => {
     </div>
   )
 }
+
+export default ContactForm

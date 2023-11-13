@@ -1,12 +1,16 @@
 import React from 'react';
 import AuthNav from './auth-nav';
 import { Link } from 'react-router-dom';
+import verifyid from "../assets/verifyid.png";
 
 
 const Navigation = () => {
   return (
     <nav id='menu' className='navbar'>
       <div className='container'>
+
+      <img className='img' src={verifyid} alt="Logo" />;
+
         <div className='navbar-header'>
         
         <AuthNav />
@@ -34,14 +38,18 @@ const Navigation = () => {
                 Profile
               </a>
             </li>
-            {/* ... other list items ... */}
+           
             <li>
               <a href='#contact' className='page-scroll'>
-                Contact
+               Contact
               </a>
             </li>
             
-
+           
+            
+          
+             
+             
 
 
 

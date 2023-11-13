@@ -2,7 +2,7 @@ import "./App.css";
 import { Helmet } from 'react-helmet';
 import Users from "./components/users";
 import { useAuth0 } from '@auth0/auth0-react';
-import { Route, Routes, Link } from 'react-router-dom';
+import {Route, Routes, Link } from 'react-router-dom';
 import UserForm from "./components/userform";
 import UserProfile from "./components/userprofile";
 import SVGAnimation from "./components/svganimation";
@@ -11,7 +11,8 @@ import EmailForm from "./components/emailform";
 import React, { useState } from 'react'
 import Navigation from "./components/navigation";
 import Loading from "./components/loading";
-import logo from "./components/logo";
+import ContactForm from "./components/contactform";
+
 
 function App() {
   const initialUser = {id:"a", first_name:"my first name", last_name:"c", username:"d", email:"e" , password:"f"};
@@ -36,7 +37,7 @@ function App() {
   // <Route path="users" component={Users} />
   // <Route path="/org-form" component={OrgForm} />
   // <Route path="/emailform" component={EmailForm} />
-
+//    <Route path="/contact" element={ContactForm} />
 
   
   
@@ -44,7 +45,7 @@ function App() {
   return (
     <div id="app" className="d-flex flex-column h-100">
         <Navigation/>
-        <logo/>
+       
      <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -60,16 +61,12 @@ function App() {
       Verify-ID
       </h1>
         
-      <img src="https://www.canva.com/design/DAFzzGhc-AU/D-w9aoTSBxGQ-1pkfJOpTw/view?utm_content=DAFzzGhc-AU&utm_campaign=designshare&utm_medium=link&utm_source=editor
-       " alt="verifyidlog" />
-     
-     
-
+   
 
       <div className="container flex-grow-1">
 
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
-      <Routes>
+      <Routes>  
      
       <Route path="api/me" element={<UserProfile user={user}/>} />
       <Route path="/userform" element={<UserForm setProfileUser={setProfileUser} />} />
@@ -77,10 +74,13 @@ function App() {
       <Route path="users"        element={<Users        />} />
       <Route path="/org-form" element={<OrgForm />} />
       <Route path="/emailform" element={<EmailForm/>} />
+      <Route path="/contactform" element={<ContactForm/> }/>
      
    
    
       </Routes>
+
+
       <SVGAnimation />
       </div>
     </div>
