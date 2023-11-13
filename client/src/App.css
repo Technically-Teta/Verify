@@ -301,13 +301,25 @@ cursor: pointer;
 
 .emailform{
  
-  margin-top: 40px;
+  margin-top: 10px;
   display: flex ;
-  width: 40%;
-  margin-left: 500px;
+  width: 20%;
+  margin-left: 900px;
   flex-direction: column;
   align-items: center ;
   justify-content: center;
+}
+
+
+.textarea{
+
+  width: 100%;
+}
+
+.subtn{
+  width: 100%;
+  margin-top: 0px;
+  padding-bottom: 30px;
 }
 
 @media screen and (max-width: 400px) {

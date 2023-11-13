@@ -130,7 +130,7 @@ app.post('/api/volunteering', async (req, res) =>{
     const {org_id, user_id, volunteering_type, volunteering_description, start_date, end_date} = req.body;
 
     const result1 = await db.query(
-    "INSERT INTO events (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+    "INSERT INTO volunteering (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
         [org_id, user_id, volunteering_type, volunteering_description, start_date, end_date]
     );
     let dbResponse1 = result1.rows[0];

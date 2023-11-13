@@ -57,12 +57,6 @@ function App() {
 
 
 
-      <h1 className="text-3xl font-bold ">
-      Verify-ID
-      </h1>
-        
-   
-
       <div className="container flex-grow-1">
 
       {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
@@ -71,7 +65,7 @@ function App() {
       <Route path="api/me" element={<UserProfile user={user}/>} />
       <Route path="/userform" element={<UserForm setProfileUser={setProfileUser} />} />
       <Route path="/userprofile" element={<UserProfile newUser={profileUser}  />} />
-      <Route path="users"        element={<Users        />} />
+      <Route path="/users"        element={<Users        />} />
       <Route path="/org-form" element={<OrgForm />} />
       <Route path="/emailform" element={<EmailForm/>} />
       <Route path="/contactform" element={<ContactForm/> }/>
