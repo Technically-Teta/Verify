@@ -1,9 +1,6 @@
-
-import React, { useState } from 'react';
-
+import { useState } from 'react';
 
 function VolunteerOrgForm({ onSubmit }) {
-  // Variable to hold the initial org + Volunteer info with empty fields for input assigned to props
   const initialInfo = {
     vol_id: '',
     volunteering_type: '',
@@ -17,10 +14,6 @@ function VolunteerOrgForm({ onSubmit }) {
   };
 
   const [volOrgForm, setVolOrgForm] = useState(initialInfo);
-
-  console.log(initialInfo);
-
-
 
   const handleVolunteeringTypeChange = (event) => {
     const volunteering_type = event.target.value;
@@ -62,30 +55,48 @@ function VolunteerOrgForm({ onSubmit }) {
     setVolOrgForm((volOrgForm) => ({ ...volOrgForm, admin_email }));
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    // Call the onSubmit function passed from the parent component and pass the form data
-    onSubmit(volOrgForm);
+  const postVolOrg = (volOrgForm) => {
+    return fetch('/api/volorg', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(volOrgForm),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Hello, I am the post request', data);
+        // Update state or perform any necessary actions with the response data
+      })
+      .catch((error) => {
+        console.error('Error submitting user information', error);
+        // Handle error, update state, or perform any necessary actions
+      });
   };
 
-// A function that handles the post request
-// const postvolOrg = (volOrgForm) => {
-//   return fetch('/api/users', {
+  const updateVolOrg = (submittedvolOrgForm) => {
+    return fetch(`/api/volunteering/${submittedvolOrgForm.id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(submittedvolOrgForm),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Hello I am the put request', data);
+        // Update state or perform any necessary actions with the response data
+      });
+  };
 
-
-
-
-
-
-
-
-
-
-
-
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    onSubmit(volOrgForm);
+    if (volOrgForm.id) {
+      updateVolOrg(volOrgForm);
+    } else {
+      postVolOrg(volOrgForm);
+    }
+  };
 
   return (
-    <form className='formprofile' onSubmit={handleFormSubmit}>
+    <form className='volorgform' onSubmit={handleFormSubmit}>
       <label>What type of Volunteering is this?</label>
       <input
         type='text'
@@ -96,7 +107,7 @@ function VolunteerOrgForm({ onSubmit }) {
         onChange={handleVolunteeringTypeChange}
       />
 
-<label>Describe the volunteering activity</label>
+      <label>Describe the volunteering activity</label>
       <input
         type='text'
         id='description'
@@ -105,9 +116,6 @@ function VolunteerOrgForm({ onSubmit }) {
         value={volOrgForm.volunteering_description}
         onChange={handleDescriptionChange}
       />
-
-
-
 
       <label>Start Date</label>
       <input
@@ -168,21 +176,13 @@ function VolunteerOrgForm({ onSubmit }) {
         value={volOrgForm.admin_email}
         onChange={handleAdminEmailChange}
       />
-      
-      <button className='volformbtn'   type='submit'  >Submit  </button>   
 
-
-       
-
+      <button className='volformbtn' type='submit'>
+        Submit
+      </button>
     </form>
-
-
-
-
-
-
-
   );
 }
 
 export default VolunteerOrgForm;
+

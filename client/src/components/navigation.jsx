@@ -23,26 +23,32 @@ const Navigation = () => {
         >
           <ul className='nav navbar-nav navbar-right'>
             <li>
-            <Link to="#volunteer organizations" className='page-scroll'>
-               Volunteer Organizations
+            <Link to="/userform" className='page-scroll'>
+               User Profile
              </Link>
             </li>
-             
             <li>
-              <a href='#about' className='page-scroll'>
-                About
-              </a>
+            <Link to="/userProfile" className='page-scroll'>
+               New User
+             </Link>
+            </li>
+
+            <li>
+              <Link to= '/volunteerorgform' className='page-scroll'>
+                Get your QR to verify!
+            </Link>
             </li>
             <li>
-              <a href='#features' className='page-scroll'>
-                Profile
-              </a>
+          <Link to='/about 'className='page-scroll'>
+                About
+          </Link>
             </li>
            
             <li>
-              <a href='#contact' className='page-scroll'>
+              <Link to="/contactform" className='page-scroll'>
                Contact
-              </a>
+              </Link>
+           
             </li>
             
            

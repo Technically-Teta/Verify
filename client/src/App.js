@@ -12,7 +12,8 @@ import Navigation from "./components/navigation";
 import Loading from "./components/loading";
 import ContactForm from "./components/contactform";
 import VolunteerOrgForm from "./components/volunteerorgform";
-
+import About from "./components/about";
+import QRgenerator from "./components/qrgenerator";
 
 function App() {
   const initialUser = {id:"a", first_name:"*", last_name:"*", username:"*", email:"*" , password:"*"};
@@ -69,7 +70,8 @@ function App() {
       <Route path="/emailform" element={<EmailForm/>} />
       <Route path="/contactform" element={<ContactForm/> }/>
       <Route path="/volunteerorgform" element={<VolunteerOrgForm />}/>
-     
+      <Route path="/about" element={<About />}/>
+      <Route path="/qrgenerator" element={<QRgenerator />}/>
       </Routes>
 
 

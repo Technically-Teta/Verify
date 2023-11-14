@@ -25,7 +25,7 @@ function QRgenerator() {
     const qrcode = formData.get('qrcode');
 
     // Submit the form to the backend
-    await axios.post('http://localhost:3000/volunteerorgform/submit-form', { qrcode });
+    await axios.post('http://localhost:3000/api/volorg', { qrcode });
 
     setFormSubmitted(true);
   };

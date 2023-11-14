@@ -1,6 +1,8 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import QrgeneratorForm from './qrgeneratorform';
+import QRgenerator from './qrgenerator';
+
+
 
 const UserProfile = ({ user_id, newUser, setNewUser }) => {
   // starting state for drop down, opens at false (closed)
@@ -16,7 +18,7 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
 
   const handleMenuOrgs = () => {
     setOpen(false);
-    {<QrgeneratorForm/>}
+   <QRgenerator/>
   };
 
 
@@ -47,7 +49,7 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
       </div>
       <br />
       <br />
-
+         <h1>**if you are a returning user click the login</h1>
       <div className="green-border-box">
         <div
           id="bigpara"
@@ -149,7 +151,7 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
         </button>
         {open ? (
           
-              <Link to="/org-intake">
+              <Link to="/qrgenerator">
                 <button className='organdvol' onClick={handleMenuOrgs}>Generate A QR Code to Track your hours!</button>
               </Link>
                
