@@ -1,5 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import axios from 'axios';
+
 
 async function generateQRCode(text) {
   const response = await axios.get(`https://api.qrcode-generator.com/generate?text=${text}`);
@@ -7,8 +8,8 @@ async function generateQRCode(text) {
   return qrcodeImage;
 }
 
-
-function QrgeneratorForm() {
+// When user clicks on Fill out org form this opens 
+function QRgenerator() {
   const [qrcodeImage, setQRCodeImage] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
 
@@ -24,7 +25,7 @@ function QrgeneratorForm() {
     const qrcode = formData.get('qrcode');
 
     // Submit the form to the backend
-    await axios.post('https://example.com/submit-form', { qrcode });
+    await axios.post('http://localhost:3000/volunteerorgform/submit-form', { qrcode });
 
     setFormSubmitted(true);
   };
@@ -52,4 +53,4 @@ function QrgeneratorForm() {
 }
 
 
-export default QrgeneratorForm
+export default QRgenerator

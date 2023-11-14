@@ -1,5 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import QrgeneratorForm from './qrgeneratorform';
 
 const UserProfile = ({ user_id, newUser, setNewUser }) => {
   // starting state for drop down, opens at false (closed)
@@ -8,16 +9,17 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
   // Function to handle open state change
   const handleOpen = () => {
     setOpen(!open);
+
+     // Add the alert here
+     alert('You will now be able to generate a QR code. Once scanned this QR code can serve as intake from your organizations admin team. Once they or you fill out the info. You can then save and track information for everytime you do service');
   };
 
   const handleMenuOrgs = () => {
     setOpen(false);
+    {<QrgeneratorForm/>}
   };
 
-  const handleMenuVol = () => {
 
-    setOpen(false);
-  };
 
   //API request is made when userId is available and newUser is null
     useEffect(() => {
@@ -146,17 +148,11 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
           Next Steps
         </button>
         {open ? (
-          <ul className="menu">
-            <li className="menu-item">
+          
               <Link to="/org-intake">
-                <button onClick={handleMenuOrgs}>Organization Intake</button>
+                <button className='organdvol' onClick={handleMenuOrgs}>Generate A QR Code to Track your hours!</button>
               </Link>
-            </li>
-            
-              <li className="menu-item">
-              <button onClick={handleMenuVol}>Volunteer Intake</button>
-            </li>
-          </ul>
+               
         ) : null}
         {open ? <div>#</div> : <div>******</div>}
       </div>

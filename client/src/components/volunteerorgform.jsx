@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 
+
 function VolunteerOrgForm({ onSubmit }) {
   // Variable to hold the initial org + Volunteer info with empty fields for input assigned to props
   const initialInfo = {
@@ -15,9 +16,11 @@ function VolunteerOrgForm({ onSubmit }) {
     admin_email: '',
   };
 
+  const [volOrgForm, setVolOrgForm] = useState(initialInfo);
+
   console.log(initialInfo);
 
-  const [volOrgForm, setVolOrgForm] = useState(initialInfo);
+
 
   const handleVolunteeringTypeChange = (event) => {
     const volunteering_type = event.target.value;
@@ -64,6 +67,22 @@ function VolunteerOrgForm({ onSubmit }) {
     // Call the onSubmit function passed from the parent component and pass the form data
     onSubmit(volOrgForm);
   };
+
+// A function that handles the post request
+// const postvolOrg = (volOrgForm) => {
+//   return fetch('/api/users', {
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <form className='formprofile' onSubmit={handleFormSubmit}>
@@ -149,9 +168,20 @@ function VolunteerOrgForm({ onSubmit }) {
         value={volOrgForm.admin_email}
         onChange={handleAdminEmailChange}
       />
+      
+      <button className='volformbtn'   type='submit'  >Submit  </button>   
 
-      <button type="submit">Submit</button>
+
+       
+
     </form>
+
+
+
+
+
+
+
   );
 }
 
