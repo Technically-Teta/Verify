@@ -5,14 +5,15 @@ import {Routes,Route, useNavigate} from 'react-router-dom'
 import UserProfile from './userprofile';
  
 
-const UserForm  = ()=> {
-//creates the navigate function to apply to routers
- const navigate =useNavigate() 
-
-//function to navigate to the user profile
-const navigateToProfile = () =>{
-  navigate('/userprofile');
-};
+const UserForm  = ({setProfileUser})=> {
+  //creates the navigate function to apply to routers
+   const navigate =useNavigate() 
+  
+  //function to navigate to the user profile
+  const navigateToProfile = () =>{
+    setProfileUser(userForm);
+    navigate('/userprofile');
+  };
 
 
  // variable to hold the initital user info which will be empty fields for input assigned to props
@@ -21,11 +22,11 @@ console.log(initialUser)
 
  // This is the intital state  of the form
 
-const [userForm, setUserForm] = useState(initialUser);
-const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
-//passes the newUser prop to the userprofile
-const [newUserId, setNewUserId] = useState(null);
-const [newUser, setNewUser] = useState(null); // Initialize with null or an appropriate default value
+      const [userForm, setUserForm] = useState(initialUser);
+      const [submitMessage, setSubmitMessage] = useState(''); // State for the submit message
+      //passes the newUser prop to the userprofile
+      const [newUserId, setNewUserId] = useState(null);
+      const [newUser, setNewUser] = useState(null); // Initialize with null or an appropriate default value
 
 
 //create functions that handle the event of the user typing into the form

@@ -5,7 +5,7 @@ import LogoutButton from './logout-button';
 import { useEffect } from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
 
-
+// begining with user registration
 const saveUser = (user) => {
     return fetch("/api/me", {
       method: "POST",

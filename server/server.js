@@ -26,6 +26,58 @@ app.get('/', (req, res) => {
 });
 
 
+//API for QR Code  template
+// app.get('/api/QR', async (req, res) => {
+//   const URL = "https://www.fruityvice.com/api/fruit/all";
+//   try {
+//     const apiRequest = await fetch(URL);
+//     const fruitInfo = await apiRequest.json();
+//     const names = fruitInfo.map(item => item.name); // Extract names from the array of objects
+//     console.log(names);
+//     res.send(names);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
+
+
+//A JOIN request
+app.post('/api/volorg', async (req, res) => {
+  try {
+    const { org_id, user_id, volunteering_type, volunteering_description, start_date, end_date } = req.body;
+
+    // Insert into volunteering table and return the inserted row
+    const result = await db.query(
+      "INSERT INTO volunteering (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+      [org_id, user_id, volunteering_type, volunteering_description, start_date, end_date]
+    );
+
+    // Get the org information for the inserted volunteering using a JOIN
+    const orgResult = await db.query(
+      "SELECT v.*, o.org_name, o.headquarters, o.phone, o.admin_email FROM volunteering v JOIN orgs o ON v.org_id = o.id WHERE v.id = $1",
+      [result.rows[0].id]
+    );
+
+    const dbResponse = {
+      ...result.rows[0],
+      org_name: orgResult.rows[0].org_name,
+      headquarters: orgResult.rows[0].headquarters,
+      phone: orgResult.rows[0].phone,
+      admin_email: orgResult.rows[0].admin_email,
+    };
+
+    console.log(dbResponse);
+    res.json(dbResponse);
+  } catch (error) {
+    console.log(error);
+    res.status(400).json({ error });
+  }
+});
+
+
+
+
+
 // create the GET requests
 app.get('/api/users', async (req,res) => {
 
@@ -41,22 +93,31 @@ app.get('/api/users', async (req,res) => {
 });
 
 
-// FRUIT API  api/fruit/all
+// API to sent up Authentication
+app.post('/api/me', cors(), async (req, res) => {
+  const newUser = {
+    last_name: req.body.last_name,
+    first_name: req.body.first_name,
+    email: req.body.email,
+    password: req.body.password,
 
-app.get('/api/fruit', async (req, res) => {
-  const URL = "https://www.fruityvice.com/api/fruit/all";
-  try {
-    const apiRequest = await fetch(URL);
-    const fruitInfo = await apiRequest.json();
-    const names = fruitInfo.map(item => item.name); // Extract names from the array of objects
-    console.log(names);
-    res.send(names);
-  } catch (err) {
-    console.log(err);
   }
+  //console.log(newUser);
+
+  const queryEmail = 'SELECT * FROM users WHERE email=$1 LIMIT 1';
+  const valuesEmail = [newUser.email]
+  const resultsEmail = await db.query(queryEmail, valuesEmail);
+  if(resultsEmail.rows[0]){
+    console.log(`Thank you ${resultsEmail.rows[0].firstname} for coming back`)
+  } else{
+  const query = 'INSERT INTO users(last_name, first_name, email, sub) VALUES($1, $2, $3, $4) RETURNING *'
+  const values = [newUser.last_name, newUser.first_name, newUser.email, newUser.password]
+  const result = await db.query(query, values);
+  console.log(result.rows[0]);
+
+  }
+
 });
-
-
 
 
 app.get('/api/orgs', cors(), async (req, res) => {
@@ -121,7 +182,7 @@ app.post('/api/volunteering', async (req, res) =>{
     const {org_id, user_id, volunteering_type, volunteering_description, start_date, end_date} = req.body;
 
     const result1 = await db.query(
-    "INSERT INTO events (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
+    "INSERT INTO volunteering (org_id, user_id, volunteering_type, volunteering_description, start_date, end_date) VALUES ($1, $2, $3, $4, $5, $6) RETURNING *",
         [org_id, user_id, volunteering_type, volunteering_description, start_date, end_date]
     );
     let dbResponse1 = result1.rows[0];
