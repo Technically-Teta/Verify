@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import QRgenerator from './qrgenerator';
+import VolunteerOrgForm from './volunteerorgform';
 
 
 
@@ -17,8 +17,8 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
   };
 
   const handleMenuOrgs = () => {
-    setOpen(false);
-   <QRgenerator/>
+    setOpen(true);
+   <VolunteerOrgForm/>
   };
 
 
@@ -151,7 +151,7 @@ const UserProfile = ({ user_id, newUser, setNewUser }) => {
         </button>
         {open ? (
           
-              <Link to="/qrgenerator">
+              <Link to="/volunteerorgform">
                 <button className='organdvol' onClick={handleMenuOrgs}>Generate A QR Code to Track your hours!</button>
               </Link>
                

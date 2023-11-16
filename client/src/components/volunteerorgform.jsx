@@ -1,6 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
+import qr from "../assets/qr.png";
 
-function VolunteerOrgForm({ onSubmit }) {
+
+
+function VolunteerOrgForm({ onSubmit = () => {} }) {
   const initialInfo = {
     vol_id: '',
     volunteering_type: '',
@@ -14,6 +17,8 @@ function VolunteerOrgForm({ onSubmit }) {
   };
 
   const [volOrgForm, setVolOrgForm] = useState(initialInfo);
+  const [showImage, setShowImage] = useState(false);
+
 
   const handleVolunteeringTypeChange = (event) => {
     const volunteering_type = event.target.value;
@@ -95,8 +100,14 @@ function VolunteerOrgForm({ onSubmit }) {
     }
   };
 
+  const handleButtonClick = () => {
+    setShowImage(true);
+  };
+
   return (
-    <form className='volorgform' onSubmit={handleFormSubmit}>
+    <div>
+      <form className='volorgform' onSubmit={handleFormSubmit}>
+
       <label>What type of Volunteering is this?</label>
       <input
         type='text'
@@ -177,12 +188,17 @@ function VolunteerOrgForm({ onSubmit }) {
         onChange={handleAdminEmailChange}
       />
 
-      <button className='volformbtn' type='submit'>
+</form>
+
+<button onClick={handleButtonClick}>
         Submit
       </button>
-    </form>
+
+      {showImage && <img className='imgqr' src={qr} alt="Submitted Image" />}
+    </div>
   );
 }
 
 export default VolunteerOrgForm;
+
 

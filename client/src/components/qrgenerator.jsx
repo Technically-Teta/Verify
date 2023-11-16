@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 async function generateQRCode(text) {
-  const response = await axios.get(`https://api.qrcode-generator.com/generate?text=${text}`);
+  const response = await axios.get(`http(s)://api.qrserver.com/v1/create-qr-code/?data=[URL-encoded-text]&size=[pixels]x[pixels]`);
   const qrcodeImage = response.data;
   return qrcodeImage;
 }

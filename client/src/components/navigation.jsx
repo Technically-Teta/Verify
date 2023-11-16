@@ -23,12 +23,12 @@ const Navigation = () => {
         >
           <ul className='nav navbar-nav navbar-right'>
             <li>
-            <Link to="/userform" className='page-scroll'>
+            <Link to="/userProfile" className='page-scroll'>
                User Profile
              </Link>
             </li>
             <li>
-            <Link to="/userProfile" className='page-scroll'>
+            <Link to="/userform" className='page-scroll'>
                New User
              </Link>
             </li>
