@@ -60,7 +60,7 @@ function App() {
 
       <div className="container flex-grow-1">
 
-      {!user ? <span>Hello from Samelia's Final Project!</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
+      {!user ? <span>*</span> : <span>Hello <Link to="api/me">{user.name}</Link></span> }
       <Routes>  
      
       <Route path="api/me" element={<UserProfile user={user}/>} />

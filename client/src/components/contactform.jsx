@@ -19,11 +19,9 @@ const ContactForm = (props) => {
   const clearState = () => setState({ ...initialState })
 
 
-  const userID= process.env.REACT_APP_USER_ID
-  const templateID= process.env.REACT_APP_TEMPLATE
-  const serviceID= process.env.REACT_APP_SERVICE
+ 
   
-  emailjs.init(serviceID, templateID, userID); 
+  emailjs.init("YR83hXBiHhfrpsyVz"); 
 
 
   const handleSubmit = (e) => {
@@ -31,7 +29,7 @@ const ContactForm = (props) => {
     console.log(name, email, message)
     emailjs
       .sendForm(
-        serviceID, userID, e.target, templateID
+        "service_l25pbuo", "template_12ogpkd", e.target
       )
       .then(
         (result) => {

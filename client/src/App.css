@@ -384,3 +384,8 @@ cursor: pointer;
   height: auto;
   object-fit: contain;
 }
+
+paragraph{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-weight: bold;
+}
