@@ -65,8 +65,8 @@ I remember the first time I volunteered for an organization. I was 16 and helped
 ## Future Developments
 [Back to Contents](#contents)
 
-As a stretch goal, I want to implement O-Auth into my project to create an actual notification that goes to an organization(admin) email to notify them that someone wants their verification for volunteering. I have never worked with this process before but if I can get all of my other functions and components to work I would really like to implement this. Also to include a QR code that can be easily scanned by the admin team at the organizations. 
-I would also like a very hightech clean looking user interface. I have been experimenting with using certain particles on the home screen and I would like to aim for this to polish the project as well as using more css. In order of priorities I want to prioritize doing the css over the OAuth because CSS has only been minimal on my prior projects and I would like to kick it up a notice for this next project. My future goal is to add Verify-ID to my Dating app that I am working on.
+As a stretch goal, I want to implement Auth0 into my project to create an actual notification that goes to an organization(admin) email to notify them that someone wants their verification for volunteering. I have never worked with this process before but if I can get all of my other functions and components to work I would really like to implement this. Also to include a QR code that can be easily scanned by the admin team at the organizations. 
+I would also like a very hightech clean looking user interface. I have been experimenting with using certain particles on the home screen and I would like to aim for this to polish the project as well as using more css. In order of priorities I want to prioritize doing the css over the Auth0 because CSS has only been minimal on my prior projects and I would like to kick it up a notice for this next project. My future goal is to add Verify-ID to my Dating app that I am working on.
 
 
 
